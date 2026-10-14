@@ -20,7 +20,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "f654e9dda2d52aacb4edb34ab7f0ee19040866981f38282ec0a96efe3dce556f",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "5207 日光型电影负片取向，冷暖分离；标准照片输入。"
   },
   {
     "id": "lut-02",
@@ -42,7 +43,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "9107f859247c513b9571cc43577a227c879aa1a478e8fa1032d1f365b9b99307",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "5219 钨丝灯型电影负片取向；标准照片输入，D 后缀待核实。"
   },
   {
     "id": "lut-03",
@@ -69,7 +71,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "7e8bee7018c3ea69ce1ab415404e28b0040639117acd02bd7b333adbdb5a1448",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "富士 C200 负片取向，日常胶片配色；标准输入，具体采样待核实。"
   },
   {
     "id": "lut-04",
@@ -96,7 +99,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "6d8fcedcecdfa565d77c1c6ad4b703682f0e353b1ec9618e0d9c6d7606b7fb22",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "经典正片仿色，低饱和与硬朗阴影，适合街拍纪实。"
   },
   {
     "id": "lut-05",
@@ -130,7 +134,8 @@ window.LUT_CATALOG = [
     "sha256": "14d8b4ebfde7aff9bc2c7afcdc5c8d79f52ad2d70bdb5f4671a4a9a11f18ee8f",
     "ambiguous": false,
     "declaredBase": "VLOG",
-    "inputVerified": true
+    "inputVerified": true,
+    "description": "F-Log2 输入的经典负片取向；标准照片会自动前置编码。"
   },
   {
     "id": "lut-06",
@@ -169,7 +174,8 @@ window.LUT_CATALOG = [
     "sha256": "997c2fc817437b18eab250d069399e2e01d16398a85e3a22e991f5696d9cbbf3",
     "ambiguous": false,
     "declaredBase": "VLOG",
-    "inputVerified": true
+    "inputVerified": true,
+    "description": "F-Log2 输入的 PROVIA 标准取向；标准照片会自动前置编码。"
   },
   {
     "id": "lut-07",
@@ -191,7 +197,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "8d62907c70b0a627e72aa8dd2471860efaa5ca41ba8fb8911c166ffe03c5fca1",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "理光 GR II 正片仿色，适合日常与街拍；标准照片输入。"
   },
   {
     "id": "lut-08",
@@ -213,7 +220,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "5584ec545ed96d73ac735a8a037490ea68162477c06f6961764070507caddd4f",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR II 正片 PB 分支；标准输入，末字母含义未确认。"
   },
   {
     "id": "lut-09",
@@ -235,7 +243,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "b2f7f45ec3b0cc2fd710126f44e68a0bdf589a59b30cb743369764df35144ee7",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR II 正片 PG 分支；标准输入，末字母含义未确认。"
   },
   {
     "id": "lut-10",
@@ -257,7 +266,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "ec34acf2d964f9cd80e4217740f2c833403af5a77e7fa1acecfeb635fce48317",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR II 正片 PY 分支；标准输入，末字母含义未确认。"
   },
   {
     "id": "lut-11",
@@ -284,7 +294,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "45d6e46636c7ca60b4bb0b6b3884d9da0ce7fbed4d37697b2fa0e62dec8b6bc4",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR III 负片仿色，褪色相纸与清晰色彩的取向。"
   },
   {
     "id": "lut-12",
@@ -311,7 +322,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "90f22ab1263ac91a1d98b70dcf4bab9c1e62c1c4ca4a0785d0730f878dd3ad08",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR III 正片仿色，适合比较街景与日常配色。"
   },
   {
     "id": "lut-13",
@@ -338,7 +350,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "69573450896ec80985834f7531bea7dbd55ca268bb45338c8bfca4f55801d90e",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR IV Cinema Green 取向，阴影偏绿的电影配色。"
   },
   {
     "id": "lut-14",
@@ -365,7 +378,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "5db7a2a7f002a5dd8546879cf3c19cbd1cd14ca0ebf06953336eb7d86b6e8f94",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "GR IV Cinema Yellow 取向，偏黄的电影配色。"
   },
   {
     "id": "lut-15",
@@ -392,7 +406,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "d59fe99a6b4f4e5d5b49ce709aea5c93cabc938a6052de5f8125fedf1b90d81f",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "LomoChrome ’92 怀旧取向，90 年代低保真配色；SK 含义待确认。"
   },
   {
     "id": "lut-16",
@@ -419,7 +434,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "8c79dc510f700173e97c4bb32152eaea10d1994bf5fdcb5fb492cb3a65d3bc36",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "LomoChrome ’92 怀旧胶片取向，保留独立 V2 版本。"
   },
   {
     "id": "lut-17",
@@ -446,7 +462,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "90e588766c644de733caaa41afb07b5c1fbd308f9ffbf00cbee4f05eb91ad2dd",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "经典负片仿色，带 DAZZ FXN 影调取向，适合日常纪实。"
   },
   {
     "id": "lut-18",
@@ -478,7 +495,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "632f5606c4bbc82d1d89da29cbab5853b771458230c5f6e78c5def00c87ebb2e",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "怀旧负片仿色，暖色与蓝色形成冷暖关系。"
   },
   {
     "id": "lut-19",
@@ -500,7 +518,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "a2e622f6e328b1de42efc3bd75b03d27e0b6bd1b229e479442abcbedbffee951",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Movus 第六版电影调色，风格较克制，适合多种场景。"
   },
   {
     "id": "lut-20",
@@ -516,7 +535,8 @@ window.LUT_CATALOG = [
     "evidence": "待核实",
     "sources": [],
     "sha256": "2ee4417be476fa450182bc861d5d630e6d3392f0663aee5f7fe268e7eda5be53",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Portry 创作调色；标准照片输入，名称与用途保留待确认。"
   },
   {
     "id": "lut-21",
@@ -538,7 +558,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "01025211af866935ce5236ded97c4d0a513151a99cb9703739a800a6fb215050",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "富士 Premium 400 花卉卷取向，SP3000 扫描配色。"
   },
   {
     "id": "lut-22",
@@ -560,7 +581,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "a4deb589e5ad2c9b73c33d3440e4bd24d2ec989b65fb2615d0460a7d89c74f80",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "宝丽来即显照片取向；具体相纸型号与制作方式未确认。"
   },
   {
     "id": "lut-23",
@@ -582,7 +604,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "833f8e3272dc3b21af890999c3f215b7412f6c23744bc8fcbf9e5abff97310a8",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "暖调电影配色，适合城市、咖啡厅与森林场景。"
   },
   {
     "id": "lut-24",
@@ -604,7 +627,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "84071f4ce061ef983e9b89436483807549f67608ad500350ebe4ee0a74705c46",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Portra 400 与 SP3000 扫描取向，适合人像与日常。"
   },
   {
     "id": "lut-25",
@@ -626,7 +650,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "1b296ea15a8d7fd7c7b4d0fa8a93d00a450b19e46b1a26e6f141d257486d1026",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Portra 400 / 哈苏 X5 扫描取向；需 Cinelike D2 输入。"
   },
   {
     "id": "lut-26",
@@ -642,7 +667,8 @@ window.LUT_CATALOG = [
     "evidence": "待核实",
     "sources": [],
     "sha256": "10473611d3fd0944bd689333d5596a3782b5c796f85f4a82fd3082aac01ebf49",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "PT400L 胶片配色，阴影偏青蓝；旧库相机转存文件，标准输入。"
   },
   {
     "id": "lut-27",
@@ -664,7 +690,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "efadb8adc041b66040d27cf12eab61f7f431344d06de41f8655984f5f50e6453",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "PT400SP 第三版胶片配色；标准输入，具体系列对应待核实。"
   },
   {
     "id": "lut-28",
@@ -691,7 +718,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "ea4cf7f0979f214970de3c9fec93b7cea6298713088f98309797850071633e66",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Plady 仿徕卡 Contemporary，现代、明快的日常配色。"
   },
   {
     "id": "lut-29",
@@ -718,7 +746,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "d7ba8c1807b7a2cb993d6a4e4b462093087a689dc27315adeca667804146a3a1",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "Plady 仿徕卡 Eternal，强调对比与色彩；标准输入。"
   },
   {
     "id": "lut-30",
@@ -745,7 +774,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "f9b18812da4757e8786a0972a2531aabca10a00be2495478cb566ef0f4cedca6",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "REALA ACE 仿色，忠实色彩与较硬影调的取向。"
   },
   {
     "id": "lut-31",
@@ -772,7 +802,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "a952502c955fd6ad645f6f00da2d269a8a95b2469b3eefa7e97e0eeca240dc6e",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "肤色提亮与配色调整，也会影响同色物体；不含人脸识别或磨皮。"
   },
   {
     "id": "lut-32",
@@ -794,7 +825,8 @@ window.LUT_CATALOG = [
       }
     ],
     "sha256": "b43969cab7a27b62586ce2d88f8ef6150b20d4609fe2e985678e503b7a489ae1",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "UltraMax 400 全能卷取向，SP3000 扫描配色。"
   },
   {
     "id": "lut-33",
@@ -810,7 +842,8 @@ window.LUT_CATALOG = [
     "evidence": "待核实",
     "sources": [],
     "sha256": "26fcf8c4ad07711ca1a047ac4ad429c3a7f5a9f52fb682b19e5aacaff10c4436",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "VOL24 G 独立调色版本；标准输入，来源与代码含义待确认。"
   },
   {
     "id": "lut-34",
@@ -826,7 +859,8 @@ window.LUT_CATALOG = [
     "evidence": "待核实",
     "sources": [],
     "sha256": "e5f75fc2dd22793d69c1b7ca8953a0c875b02cc6994cb56b77d9d734d7d6c987",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "VOL24 H 独立调色版本；标准输入，来源与代码含义待确认。"
   },
   {
     "id": "lut-35",
@@ -842,467 +876,694 @@ window.LUT_CATALOG = [
     "evidence": "待核实",
     "sources": [],
     "sha256": "a84e7a29215308e375e26f8a417c49eba5ba60865ee6c9fd459beb3a95ec6e54",
-    "ambiguous": false
+    "ambiguous": false,
+    "description": "VOL24 T 独立调色版本；标准输入，来源与代码含义待确认。"
   },
   {
     "id": "custom-925321688748004d",
-    "name": "ETERNL33",
+    "name": "Leica Eternal · 永恒",
     "filename": "ETERNL33.cube",
     "path": "assets/luts/custom-925321688748004d.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "925321688748004de152be024f3563cd647b2283e4a1ec451988402a5676d294",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Eternal」。注释记录从 default_eternal.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Eternal",
+    "description": "强对比、鲜明色彩与偏洋红配色，适合有冲击力的街景。",
+    "cn": "Leica Eternal · 永恒",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-64a90c7b6db8375c",
-    "name": "CONTEM33",
+    "name": "Leica Contemporary · 现代",
     "filename": "CONTEM33.cube",
     "path": "assets/luts/custom-64a90c7b6db8375c.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "64a90c7b6db8375c6a07dd187ef75d242bafed1682ab7c3cfa2a9ff1a43a3395",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Contemporary」。注释记录从 default_contemporary.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Contemporary",
+    "description": "暗部较明亮、色彩自然，适合日常与人像。",
+    "cn": "Leica Contemporary · 现代",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-ace8f8e9f47bbfc9",
-    "name": "GREG33",
+    "name": "Greg Williams Mono（STD）",
     "filename": "GREG33.cube",
     "path": "assets/luts/custom-ace8f8e9f47bbfc9.cube",
-    "category": "新增风格",
+    "category": "徕卡单色",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "ace8f8e9f47bbfc927d8682c02f1704567c3b3fd2486d71bc3b7acc80d10d0b9",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Greg Williams Mono」。注释记录从 default_gregwilliams.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 GREG33 与 MGREG33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Greg Williams Mono",
+    "description": "暖调黑白取向，强调明暗层次；接受标准彩色输入。",
+    "cn": "Greg Williams Mono（STD）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-e8db152d931b5d10",
-    "name": "PURE33",
+    "name": "Leica Pure · 纯净",
     "filename": "PURE33.cube",
     "path": "assets/luts/custom-e8db152d931b5d10.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "e8db152d931b5d1087cbb95c604d79ac75c85424cb4ffc028db49a823e149e5e",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Pure」。注释记录从 default_pure.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Pure",
+    "description": "较柔和、低饱和的自然彩色配色，适合安静的日常画面。",
+    "cn": "Leica Pure · 纯净",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-187bb5198a0dbfb8",
-    "name": "SELENM33",
+    "name": "Leica Selenium · 硒调（STD）",
     "filename": "SELENM33.cube",
     "path": "assets/luts/custom-187bb5198a0dbfb8.cube",
-    "category": "新增风格",
+    "category": "徕卡单色",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "187bb5198a0dbfb8b290001c765b48bd5e10277a72322f9970cfa4471fc22b8b",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Selenium」。注释记录从 default_selenium.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 SELENM33 与 MSELEN33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Selenium",
+    "description": "冷紫色单色配色、对比较柔和；接受标准彩色输入。",
+    "cn": "Leica Selenium · 硒调（STD）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-5a40086bda37b2c4",
-    "name": "SEPIA33",
+    "name": "Leica Sepia · 棕调（STD）",
     "filename": "SEPIA33.cube",
     "path": "assets/luts/custom-5a40086bda37b2c4.cube",
-    "category": "新增风格",
+    "category": "徕卡单色",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "5a40086bda37b2c4cde111cc61d6e845fc2350f6bbd207c94c70d1e972826d29",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Sepia」。注释记录从 default_sepia.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 SEPIA33 与 MSEPIA33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Sepia",
+    "description": "棕黄色单色配色，带旧照片观感；接受标准彩色输入。",
+    "cn": "Leica Sepia · 棕调（STD）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-f781a76cb9c3e0e1",
-    "name": "SILVER33",
+    "name": "Leica Silver · 银调",
     "filename": "SILVER33.cube",
     "path": "assets/luts/custom-f781a76cb9c3e0e1.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "f781a76cb9c3e0e1d6c93dd16f1222e8bc14e325dd34b9cd2e163340da2ef7bc",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Silver」。注释记录从 default_silver.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Silver",
+    "description": "冷钢色的彩色配色，暗部提亮、对比平滑；保留彩色。",
+    "cn": "Leica Silver · 银调",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-860c57421cfea26e",
-    "name": "TEAL33",
+    "name": "Leica Teal · 青调",
     "filename": "TEAL33.cube",
     "path": "assets/luts/custom-860c57421cfea26e.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "860c57421cfea26ecccf7cce74bad30732bd9da5521d5106cb69f7e21b51ac45",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Teal」。注释记录从 default_teal.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Teal",
+    "description": "蓝绿冷调的电影配色，适合城市与风景。",
+    "cn": "Leica Teal · 青调",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-26dc29a7618c6170",
-    "name": "STEVE33",
+    "name": "Leica Steve McCurry",
     "filename": "STEVE33.cube",
     "path": "assets/luts/custom-26dc29a7618c6170.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "26dc29a7618c61705bfcb57e468de2eee0a1923a4540a9da8c374d437fc92805",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Steve McCurry」。注释记录从 default_stevemccurry.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Steve McCurry",
+    "description": "色彩鲜明、对比有力，适合纪实与旅行场景。",
+    "cn": "Leica Steve McCurry",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-2924083e392402b2",
-    "name": "BLUE33",
+    "name": "Leica Blue · 蓝晒（STD）",
     "filename": "BLUE33.cube",
     "path": "assets/luts/custom-2924083e392402b2.cube",
-    "category": "新增风格",
+    "category": "徕卡单色",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "2924083e392402b295bb044a0b8f8b322da53aa3090febe34c0a5a79bcbe9646",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Blue」。注释记录从 default_blue.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 BLUE33 与 MBLUE33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Blue",
+    "description": "蓝色单色配色，模拟蓝晒观感；接受标准彩色输入。",
+    "cn": "Leica Blue · 蓝晒（STD）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-96021d0be678588c",
-    "name": "BLEACH33",
+    "name": "Leica Bleach · 漂白",
     "filename": "BLEACH33.cube",
     "path": "assets/luts/custom-96021d0be678588c.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "96021d0be678588c95034badaa2af81a2ad120ed9fa4f44341bc151f1465c47b",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Bleach」。注释记录从 default_bleach.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Bleach",
+    "description": "饱和较低、暗部偏冷蓝，适合克制的电影氛围。",
+    "cn": "Leica Bleach · 漂白",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-3fbf21bb5e8018d7",
-    "name": "BRASS33",
+    "name": "Leica Brass · 黄铜",
     "filename": "BRASS33.cube",
     "path": "assets/luts/custom-3fbf21bb5e8018d7.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "3fbf21bb5e8018d7dcba1d37b2e022a5a9dd64bb251983e6f0798b3682779328",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Brass」。注释记录从 default_brass.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Brass",
+    "description": "金色暖调的中间调与高光，适合日落与暖光场景。",
+    "cn": "Leica Brass · 黄铜",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-f98b833e7ff7b99b",
-    "name": "CHROME33",
+    "name": "Leica Chrome · 铬调",
     "filename": "CHROME33.cube",
     "path": "assets/luts/custom-f98b833e7ff7b99b.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "f98b833e7ff7b99b3285ec83fcad0437d13960900f1a3ff1c404892a5bde1dd0",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Chrome」。注释记录从 default_chrome.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Chrome",
+    "description": "低饱和、含蓄对比的彩色配色，适合街景纪实。",
+    "cn": "Leica Chrome · 铬调",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-3299e861780e9c8c",
-    "name": "CINE33",
+    "name": "Leica Cine · 电影",
     "filename": "CINE33.cube",
     "path": "assets/luts/custom-3299e861780e9c8c.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "3299e861780e9c8c1c344c0a0605ce3b8a42c697e7e55faa925355309a5931a3",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Cine」。注释记录从 default_cine.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Cine",
+    "description": "较克制的饱和与影调，适合比较电影氛围配色。",
+    "cn": "Leica Cine · 电影",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-fa10b0463e001899",
-    "name": "CLASIC33",
+    "name": "Leica Classic · 经典",
     "filename": "CLASIC33.cube",
     "path": "assets/luts/custom-fa10b0463e001899.cube",
-    "category": "新增风格",
+    "category": "徕卡风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "fa10b0463e001899bcca4ea60817937b01ec3d0ff08afb1d36643ed3dcbfcce0",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Classic」。注释记录从 default_classic.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Classic",
+    "description": "较强对比与暖调褪色配色，带复古电影观感。",
+    "cn": "Leica Classic · 经典",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      }
+    ]
   },
   {
     "id": "custom-b4b683cb779cbf00",
-    "name": "MBLUE33",
+    "name": "Leica Blue · 蓝晒（MONO）",
     "filename": "MBLUE33.cube",
     "path": "assets/luts/custom-b4b683cb779cbf00.cube",
-    "category": "徕卡风格-单色",
-    "base": "UNKNOWN",
+    "category": "徕卡单色",
+    "base": "MONO",
     "declaredBase": "MONO",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "b4b683cb779cbf00f804dfc88645a8c165ebefd03b8ac8d3ad882110646eedca",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Blue」。注释记录从 mono_blue.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 MBLUE33 与 BLUE33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。 MONO 对应单色照片格调；改变图片编码标签不会把彩色照片转成匹配的单色基底。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Blue",
+    "description": "蓝色单色配色；文件声明 MONO 基底，请使用匹配的单色输入。",
+    "cn": "Leica Blue · 蓝晒（MONO）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      },
+      {
+        "title": "Panasonic LUMIX LAB 照片格调与 LUT 说明",
+        "url": "https://av.jpn.support.panasonic.com/support/global/cs/soft/lumix_lab/en/cts/a1.html",
+        "claim": "单色照片格调与标准格调分别记录；输入标记本身不会转换照片数值。"
+      }
+    ]
   },
   {
     "id": "custom-e224d52c78a6d537",
-    "name": "MGREG33",
+    "name": "Greg Williams Mono（MONO）",
     "filename": "MGREG33.cube",
     "path": "assets/luts/custom-e224d52c78a6d537.cube",
-    "category": "徕卡风格-单色",
-    "base": "UNKNOWN",
+    "category": "徕卡单色",
+    "base": "MONO",
     "declaredBase": "MONO",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "e224d52c78a6d5376f63f0fbb4fcb1fa23061656fb09bfc608d160015651cf28",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Greg Williams Mono」。注释记录从 mono_gregwilliams.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 MGREG33 与 GREG33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。 MONO 对应单色照片格调；改变图片编码标签不会把彩色照片转成匹配的单色基底。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Greg Williams Mono",
+    "description": "暖调黑白配色；文件声明 MONO 基底，请使用匹配的单色输入。",
+    "cn": "Greg Williams Mono（MONO）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      },
+      {
+        "title": "Panasonic LUMIX LAB 照片格调与 LUT 说明",
+        "url": "https://av.jpn.support.panasonic.com/support/global/cs/soft/lumix_lab/en/cts/a1.html",
+        "claim": "单色照片格调与标准格调分别记录；输入标记本身不会转换照片数值。"
+      }
+    ]
   },
   {
     "id": "custom-ecec03af164a67f5",
-    "name": "MSEPIA33",
+    "name": "Leica Sepia · 棕调（MONO）",
     "filename": "MSEPIA33.cube",
     "path": "assets/luts/custom-ecec03af164a67f5.cube",
-    "category": "徕卡风格-单色",
-    "base": "UNKNOWN",
+    "category": "徕卡单色",
+    "base": "MONO",
     "declaredBase": "MONO",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "ecec03af164a67f5464332d9e7c915d9cc1737fe13d32f14d17fa1d8f9c068e4",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Sepia」。注释记录从 mono_sepia.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 MSEPIA33 与 SEPIA33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。 MONO 对应单色照片格调；改变图片编码标签不会把彩色照片转成匹配的单色基底。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Sepia",
+    "description": "棕黄色单色配色；文件声明 MONO 基底，请使用匹配的单色输入。",
+    "cn": "Leica Sepia · 棕调（MONO）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      },
+      {
+        "title": "Panasonic LUMIX LAB 照片格调与 LUT 说明",
+        "url": "https://av.jpn.support.panasonic.com/support/global/cs/soft/lumix_lab/en/cts/a1.html",
+        "claim": "单色照片格调与标准格调分别记录；输入标记本身不会转换照片数值。"
+      }
+    ]
   },
   {
     "id": "custom-4bd16c9a2a840520",
-    "name": "MSELEN33",
+    "name": "Leica Selenium · 硒调（MONO）",
     "filename": "MSELEN33.cube",
     "path": "assets/luts/custom-4bd16c9a2a840520.cube",
-    "category": "徕卡风格-单色徕卡风格",
-    "base": "UNKNOWN",
+    "category": "徕卡单色",
+    "base": "MONO",
     "declaredBase": "MONO",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "4bd16c9a2a8405204182f18c21f803b6004093a06747d346c8aab76f628d2d76",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件标头署名 Leica Camera AG，TITLE 为「Leica Selenium」。注释记录从 mono_selenium.CUBE 以三线性插值在本地重采样为 33³ 网格。",
+    "uncertainty": "重采样不会增加源表的颜色信息；没有核对官方原始下载文件，不能视为未经修改的官方 33³ 导出。简介描述的是大致配色，实际效果随原图与输入基底变化。 本库 MSELEN33 与 SELENM33 的数值查找表相同，但文件声明的输入基底不同，因此保留为两项。 MONO 对应单色照片格调；改变图片编码标签不会把彩色照片转成匹配的单色基底。",
+    "evidence": "输入与署名来自 CUBE 标头；视觉取向参考同名官方介绍及文件采样",
+    "ambiguous": false,
+    "cubeTitle": "Leica Selenium",
+    "description": "冷紫色单色配色；文件声明 MONO 基底，请使用匹配的单色输入。",
+    "cn": "Leica Selenium · 硒调（MONO）",
+    "sources": [
+      {
+        "title": "Leica Looks 官方风格介绍",
+        "url": "https://leica-camera.com/en-US/photography/leica-looks",
+        "claim": "说明同名风格的视觉取向，不证明本地重采样文件与官方分发文件一致。"
+      },
+      {
+        "title": "Panasonic LUMIX LAB 照片格调与 LUT 说明",
+        "url": "https://av.jpn.support.panasonic.com/support/global/cs/soft/lumix_lab/en/cts/a1.html",
+        "claim": "单色照片格调与标准格调分别记录；输入标记本身不会转换照片数值。"
+      }
+    ]
   },
   {
     "id": "custom-e94b7b61ced111b4",
     "name": "DS_5219 update_33",
     "filename": "DS_5219 update_33.cube",
     "path": "assets/luts/custom-e94b7b61ced111b4.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "UNKNOWN",
     "declaredBase": "UNKNOWN",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "e94b7b61ced111b4280ba81d070f78e28b2a67c47523573ac879f119d115a7af",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "CUBE 注释署名 DESONG，33³ 网格；文件没有声明输入照片格调。",
+    "uncertainty": "5219 名称指向电影胶片取向，但具体制作方法及 update 版本未核实。文件无输入声明，不能仅凭名字或画面判断为标准或 Log 输入。",
+    "evidence": "文件署名与结构已核对；系列含义未取得作者说明",
+    "ambiguous": false,
+    "cubeTitle": "DS_5219 update_33",
+    "description": "DESONG 5219 命名的电影配色，阴影偏青冷；输入基底待确认。"
   },
   {
     "id": "custom-67558d955fcc9e42",
     "name": "DS_V500_VLog_33",
     "filename": "DS_V500_VLog_33.cube",
     "path": "assets/luts/custom-67558d955fcc9e42.cube",
-    "category": "新增风格",
+    "category": "电影 Log",
     "base": "VLOG",
     "declaredBase": "UNKNOWN",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "67558d955fcc9e4278468561fdb75058b07d5edefeeeb29f99a2b863232e0407",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
+    "origin": "CUBE 注释署名 DESONG，33³ 网格；文件没有声明输入照片格调。",
+    "uncertainty": "保留维护者此前确认的 V-Log 输入选择，文件名也包含 VLog，但 CUBE 标头未声明。V500 的含义、输出色彩空间和版本说明未取得作者资料。",
+    "evidence": "文件署名与结构已核对；系列含义未取得作者说明",
     "ambiguous": false,
-    "inputVerified": true
+    "inputVerified": true,
+    "cubeTitle": "DS_V500_VLog_33",
+    "description": "DESONG V500 系列电影配色；按维护者指定的 V-Log 基底使用。"
   },
   {
     "id": "custom-daecf959e765c66c",
     "name": "PT400HS V3 Plady",
     "filename": "PT400HS V3 Plady.cube",
     "path": "assets/luts/custom-daecf959e765c66c.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "daecf959e765c66ca4fd6e09f45f3e7b736ead74a6437a071b47fd60cfd5d932",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Photoshop 导出，TITLE 为「PT400HS V3 Plady.psd」。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400HS V3 Plady.psd",
+    "description": "PT400 HS 第三版胶片配色，中间调偏冷、色彩较克制；标准输入。"
   },
   {
     "id": "custom-a6a3bb98da470487",
     "name": "PT400SP V4 Plady",
     "filename": "PT400SP V4 Plady.cube",
     "path": "assets/luts/custom-a6a3bb98da470487.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "a6a3bb98da47048759c8b843ecc6bceb3361716d3a38577be9bb88577c25fb93",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Photoshop 导出，TITLE 为「PT400SP V4 Plady」。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400SP V4 Plady",
+    "description": "PT400 SP 第四版胶片配色，青冷阴影与偏暖中间调；标准输入。"
   },
   {
     "id": "custom-2d0e8e2e2d3574c2",
     "name": "PT400L Plady",
     "filename": "PT400L Plady.cube",
     "path": "assets/luts/custom-2d0e8e2e2d3574c2.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "2d0e8e2e2d3574c28a6c8464da691b5fbe744cf9e2a81ab09bb42be497686a9a",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Photoshop 导出，TITLE 为「PT400X5 Plady.psb」。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。 文件名与内部 TITLE 不同，TITLE 记为 PT400X5 Plady.psb；保留原文件名，不据此改成 X5 或推断 L / LD 的含义。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400X5 Plady.psb",
+    "description": "PT400L 胶片配色，阴影偏青蓝；2026 导出标头，标准输入。"
   },
   {
     "id": "custom-f155fbaea4156df8",
     "name": "PT400X5 Plady",
     "filename": "PT400X5 Plady.cube",
     "path": "assets/luts/custom-f155fbaea4156df8.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "f155fbaea4156df8e1971968c123381848c3b88ad20ffbac3b88becf006e5ad7",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Photoshop 导出，TITLE 为「PT400X5 Plady.psb」。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400X5 Plady.psb",
+    "description": "PT400 X5 胶片配色，暖红与青绿关系，适合人像与日常；标准输入。"
   },
   {
     "id": "custom-c01ae7b8da040f27",
     "name": "PT400X5D Plady",
     "filename": "PT400X5D Plady.cube",
     "path": "assets/luts/custom-c01ae7b8da040f27.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "c01ae7b8da040f2771e10417ec7f1890f77cf78b13fb6c7a0d0d041577528523",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Lightroom Export LUT 导出，预设名称为 Portra400X5 V2。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。 文件明确声明 STD，并记录 Rec709gamma2.4.icc 导出配置；D 后缀不等于 Cinelike D2，Rec.709 γ2.4 与 sRGB 的曲线也不相同，浏览器标准图片仅作风格预览。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400X5D Plady",
+    "description": "Portra400X5 V2 预设导出，偏暖中间调；STD 标记，导出配置为 Rec.709 γ2.4。"
   },
   {
     "id": "custom-b1a9ec92332e8a62",
     "name": "PT400LD Plady",
     "filename": "PT400LD Plady.cube",
     "path": "assets/luts/custom-b1a9ec92332e8a62.cube",
-    "category": "新增风格",
+    "category": "胶片风格",
     "base": "STD",
     "declaredBase": "STD",
     "grid": 33,
     "size1D": 0,
     "size3D": 33,
     "sha256": "b1a9ec92332e8a62904b4a267d1bc9c571685fef341df265badea1bdf761940f",
-    "origin": "由库维护者添加。",
-    "uncertainty": "输入基底与来源说明由维护者填写。",
-    "evidence": "维护者提供",
-    "ambiguous": false
+    "origin": "文件版权注释署名 Plady（2026），声明 STD 输入；Photoshop 导出，TITLE 为「PT400X5 Plady.psb」。",
+    "uncertainty": "保留各个文件独立记录；未取得这些精确版本的作者变更说明，HS / SP / X5 扫描命名取向不能证明本文件的采样过程。 文件名与内部 TITLE 不同，TITLE 记为 PT400X5 Plady.psb；保留原文件名，不据此改成 X5 或推断 L / LD 的含义。",
+    "evidence": "署名、输入、导出标头已核对；具体版本说明待核实",
+    "ambiguous": false,
+    "cubeTitle": "PT400X5 Plady.psb",
+    "description": "PT400LD 胶片配色，阴影偏蓝；标准输入，LD 含义待核实。"
   }
 ];
 window.IMAGE_CATALOG = [

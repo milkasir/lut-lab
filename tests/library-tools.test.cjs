@@ -7,3 +7,17 @@ test('ZIP preserves UTF-8 names, exact binary content, and valid CRC-32',async()
 });
 test('catalog serialization preserves existing and newly added metadata safely',()=>{const luts=[{id:'one',name:'</script><script>throw 1</script>',base:'FLOG2',declaredBase:'VLOG',inputVerified:true}],images=[{id:'image',path:'assets/images/example.png'}],source=tools.serializeCatalog(luts,images),context={window:{}};vm.runInNewContext(source,context);assert.equal(context.window.LUT_CATALOG[0].name,luts[0].name);assert.equal(context.window.LUT_CATALOG[0].inputVerified,true);assert.equal(context.window.IMAGE_CATALOG[0].path,images[0].path);assert.ok(!source.includes('</script>'));});
 test('ZIP rejects traversal and absolute paths',async()=>{for(const name of ['../outside','/absolute','assets\\wrong'])await assert.rejects(()=>tools.zip([{name,data:'text'}]));});
+
+test('editable descriptions round-trip as text and merge with concurrent uploads',()=>{
+  const base={luts:[{id:'one',name:'One',path:'assets/luts/one.cube',base:'MONO',description:'旧简介'}],images:[{id:'photo',name:'Photo',path:'assets/images/photo.jpg'}]},local=structuredClone(base),remote=structuredClone(base);
+  local.luts[0].description='冷调\n"蓝晒" <script>window.executed=true</script>';
+  remote.luts.push({id:'two',name:'Two',path:'assets/luts/two.cube',base:'STD',description:'新上传'});remote.luts[0].category='徕卡单色';
+  const merged=tools.mergeCatalog(base,local,remote),source=tools.serializeCatalog(merged.luts,merged.images),result=tools.parseCatalog(source);
+  assert.equal(result.luts[0].description,local.luts[0].description);assert.equal(result.luts[0].category,'徕卡单色');assert.equal(result.luts[0].base,'MONO');assert.equal(result.luts.length,2);assert.ok(!source.includes('<script>'));
+  const context={window:{}};vm.runInNewContext(source,context);assert.equal(context.window.executed,undefined);
+});
+test('concurrent description edits require review instead of overwriting either author',()=>{
+  const base={luts:[{id:'one',name:'One',path:'assets/luts/one.cube',description:'原简介'}],images:[]},local=structuredClone(base),remote=structuredClone(base);
+  local.luts[0].description='本地简介';remote.luts[0].description='远端简介';assert.throws(()=>tools.mergeCatalog(base,local,remote),/description.*同时修改/);
+});
+

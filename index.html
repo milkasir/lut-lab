@@ -4,8 +4,8 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="在浏览器中实时比较 LUT。上传照片和 CUBE，自定义多窗格、输入转换与强度，一键导出效果对比图。">
   <meta name="theme-color" content="#151717"><title>LUT LAB · 在线调色实验室</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=adaptive-panes-1">
-  <script defer src="assets/catalog.js?v=photos-cf742d08"></script><script defer src="js/lut-core.js"></script><script defer src="js/renderer.js"></script><script defer src="js/lut-picker.js"></script><script defer src="js/library-tools.js"></script><script defer src="js/public-catalog.js?v=refresh-only-1"></script><script defer src="js/app.js?v=panes-refresh-1"></script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=lut-intros-1">
+  <script defer src="assets/catalog.js?v=lut-intros-1"></script><script defer src="js/lut-core.js"></script><script defer src="js/renderer.js"></script><script defer src="js/lut-picker.js"></script><script defer src="js/library-tools.js"></script><script defer src="js/public-catalog.js?v=refresh-only-1"></script><script defer src="js/app.js?v=lut-intros-1"></script>
 </head>
 <body>
   <a class="skip" href="#workspace">跳到比较工作台</a>
@@ -18,7 +18,7 @@
     <aside class="library" aria-label="LUT 素材库">
       <div class="library-heading"><div><span class="eyebrow">COLLECTION</span><h2>LUT 素材库 <span id="libraryCount" class="counter">…</span></h2></div><button id="uploadLutButton" class="icon-btn" title="上传 CUBE LUT" aria-label="上传 CUBE LUT">＋</button></div>
       <p class="muted small">选择多款，放进工作台或批量导出。</p>
-      <label class="search-box"><span aria-hidden="true">⌕</span><input id="lutSearch" type="search" placeholder="搜索名称、风格或输入基底" aria-label="搜索 LUT"></label>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="lutSearch" type="search" placeholder="搜索名称、简介、风格或输入基底" aria-label="搜索 LUT"></label>
       <div class="filters"><select id="categoryFilter" aria-label="风格分类"><option value="">全部风格</option></select><button id="favoritesFilter" class="icon-btn" aria-label="仅显示收藏" aria-pressed="false" title="仅显示收藏">☆</button></div>
       <div class="selection-line"><label><input id="selectVisible" type="checkbox"> 选择当前结果</label><span id="selectedCount">0 已选</span></div>
       <div id="lutList" class="lut-list"></div>
@@ -29,14 +29,14 @@
       <section class="source-section" aria-label="图片素材">
         <div class="section-line"><h2>图片素材 <span id="imageCount" class="muted">…</span></h2><button id="uploadImageButton" class="quiet">＋ 上传图片</button></div>
         <div id="imageStrip" class="image-strip"></div>
-        <div class="image-settings"><label>选中图片的编码 <select id="imageBase" aria-label="选中图片的编码"><option value="STD">sRGB / 标准 JPG</option><option value="VLOG">V-Log / V-Gamut</option><option value="FLOG2">F-Log2 / F-Gamut</option><option value="CNED2">Cinelike D2</option><option value="UNKNOWN">未知编码</option></select></label><span id="imageInfo" class="muted small"></span><button id="applyImage" class="quiet">应用到所有窗格</button></div>
+        <div class="image-settings"><label>选中图片的编码 <select id="imageBase" aria-label="选中图片的编码"><option value="STD">sRGB / 标准 JPG</option><option value="VLOG">V-Log / V-Gamut</option><option value="FLOG2">F-Log2 / F-Gamut</option><option value="CNED2">Cinelike D2</option><option value="MONO">MONO / 单色格调</option><option value="UNKNOWN">未知编码</option></select></label><span id="imageInfo" class="muted small"></span><button id="applyImage" class="quiet">应用到所有窗格</button></div>
       </section>
       <section class="comparison" aria-label="LUT 对比">
         <div class="compare-toolbar"><div class="toolbar-start"><h2>比较工作台 <span id="paneTotal" class="counter">4</span></h2><button id="addPane" class="secondary add-pane">＋ 新增窗格</button><label>列数 <select id="columnCount" aria-label="列数"><option value="auto">自动</option><option value="1">1 列</option><option value="2">2 列</option><option value="3">3 列</option><option value="4">4 列</option></select></label></div><div class="toolbar-end"><div class="segmented" aria-label="显示方式"><button id="gridMode" class="active" aria-pressed="true">效果图</button><button id="splitMode" aria-pressed="false">原图分割</button></div><select id="interpolation" aria-label="LUT 插值"><option value="tetrahedral">四面体插值</option><option value="trilinear">三线性插值</option></select></div></div>
         <div id="paneGrid" class="pane-grid"></div>
         <div class="workspace-footer"><span><span class="live-dot"></span> <span id="renderStatus" aria-live="polite">正在载入示例</span></span><span>点击图片放大 · 拖动分界比较 · 按需新增窗格</span></div>
       </section>
-      <details class="compatibility-guide"><summary>关于输入匹配与兼容性 <span>了解更多 ↗</span></summary><div><p>文件能读取，并不代表输入图片的编码适合它。标准 JPG 可直接比较 STD 风格；D2 与 Log LUT 需要相应基底的素材。各窗格的「输入与转换」可以选择前置 LUT，或从标准图片编码到 V-Log / F-Log2。</p><p>FLog2_NC 和 FLog2_PROVIA 已由库维护者验证使用 F-Log2 转换。选择这两款时，「自动匹配」会给标准图片应用 F-Log2 前置编码；图片已标为 F-Log2 时直接输入。原文件的 VLOG 注释保留，站点按已验证的 F-Log2 元数据处理。</p><p>前置编码以 sRGB 反解线性、转换色域后重新编码 Log，不会恢复照片已经丢失的高光和场景信息。D2 请使用 D2 原片或经过验证的前置转换 LUT。浏览器处理显示用 sRGB 图片；Log 图请准备保留原始数值、没有自动显示变换的 PNG/JPG。</p></div></details>
+      <details class="compatibility-guide"><summary>关于输入匹配与兼容性 <span>了解更多 ↗</span></summary><div><p>文件能读取，并不代表输入图片的编码适合它。标准 JPG 可直接比较 STD 风格；D2 与 Log LUT 需要相应基底的素材。各窗格的「输入与转换」可以选择前置 LUT，或从标准图片编码到 V-Log / F-Log2。</p><p>FLog2_NC 和 FLog2_PROVIA 已由库维护者验证使用 F-Log2 转换。选择这两款时，「自动匹配」会给标准图片应用 F-Log2 前置编码；图片已标为 F-Log2 时直接输入。原文件的 VLOG 注释保留，站点按已验证的 F-Log2 元数据处理。</p><p>MONO 标记表示单色照片格调输入；请使用匹配的单色素材，改变编码标签不会把彩色图片转成黑白。列表中的单色效果也可能接受 STD 彩色输入，以各文件输入标记为准。</p><p>前置编码以 sRGB 反解线性、转换色域后重新编码 Log，不会恢复照片已经丢失的高光和场景信息。D2 请使用 D2 原片或经过验证的前置转换 LUT。浏览器处理显示用 sRGB 图片；Log 图请准备保留原始数值、没有自动显示变换的 PNG/JPG。</p></div></details>
       <footer class="site-footer"><span>LUT LAB <b> / </b> 用色彩记录你的选择</span></footer>
     </main>
   </div>
@@ -49,5 +49,6 @@
   <div id="dropOverlay" class="drop-overlay" hidden><div><span aria-hidden="true">＋</span><h2>把素材放进实验室</h2><p>图片与 .cube 可同时拖入</p></div></div>
   <noscript><p class="noscript">请开启 JavaScript，LUT 计算与图片对比需要它。</p></noscript>
 </body></html>
+
 
 
