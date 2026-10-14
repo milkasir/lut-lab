@@ -25,3 +25,70 @@ test('deletion preserves shared files and concurrent new entries',async()=>{
   const m=mock(data),c=client(m);await c.connect();const remote=clone(data);remote.images.push({id:'new',name:'New',path:'assets/images/new.png'});m.advance(remote,{'assets/images/photo.jpg':'shared','assets/images/new.png':'new'});
   await c.publish(local,[]);assert.equal(m.catalog.images.length,2);assert.ok(m.files.has('assets/images/photo.jpg'));assert.ok(m.files.has('assets/images/new.png'));
 });
+function rejection(status,message,headers={}){
+  return {ok:false,status,json:async()=>({message}),headers:{get:name=>headers[name]??null}};
+}
+test('readable repository can reject asset writes and be reconnected without losing pending assets',async()=>{
+  const m=mock(original);let readonly=true;
+  const c=new G.Publisher({repo:'demo/lut-lab',token:'unit-test-placeholder',fetchImpl:(url,request)=>{
+    if(readonly&&request.method==='POST')return Promise.resolve(rejection(403,'Resource not accessible by personal access token'));
+    return m.fetch(url,request);
+  }});
+  await c.connect();const before=m.head,local=clone(original),files=[{name:'assets/luts/new.cube',data:new Uint8Array([1,2,3])}];
+  local.luts.push({id:'new',name:'New',path:files[0].name});
+  await assert.rejects(()=>c.publish(local,files),error=>{
+    assert.equal(error.status,403);assert.equal(error.uncertain,undefined);
+    assert.match(error.message,/Contents.*Read and write/);assert.match(error.message,/上传素材/);assert.match(error.message,/Resource not accessible/);return true;
+  });
+  assert.equal(m.head,before);assert.deepEqual(c.baseline,original);
+  c.disconnect();readonly=false;
+  const connected=new G.Publisher({repo:'demo/lut-lab',token:'updated-test-placeholder',fetchImpl:m.fetch});
+  await connected.connect();await connected.publish(local,files);assert.equal(m.catalog.luts.length,2);
+});
+test('rate limiting uses retry delay instead of telling the user to change permissions',async()=>{
+  for(const [status,message,headers,seconds] of [
+    [403,'API rate limit exceeded',{'x-ratelimit-remaining':'0','x-ratelimit-reset':String(Math.ceil(Date.now()/1000)+120)},120],
+    [403,'You have exceeded a secondary rate limit',{'retry-after':'90'},90],
+    [429,'Too many requests',{},60]
+  ]){
+    const c=new G.Publisher({repo:'demo/lut-lab',token:'unit-test-placeholder',fetchImpl:async()=>rejection(status,message,headers)});
+    await assert.rejects(()=>c.api(c.prefix+'/git/blobs','POST',{}),error=>{
+      assert.equal(error.kind,'rate-limit');assert.match(error.message,/访问频率受限/);assert.doesNotMatch(error.message,/Contents/);
+      if(status===429||headers['retry-after'])assert.match(error.message,new RegExp(seconds+' 秒'));
+      return true;
+    });
+  }
+});
+test('failed writes report their publishing stage and preserve the GitHub reason',async()=>{
+  for(const [path,method,step] of [
+    ['/git/blobs','POST','上传素材'],['/git/trees','POST','保存素材清单'],['/git/commits','POST','创建提交'],['/git/refs/heads/main','PATCH','更新发布分支']
+  ]){
+    const c=new G.Publisher({repo:'demo/lut-lab',token:'unit-test-placeholder',fetchImpl:async()=>rejection(403,'Resource not accessible by personal access token')});
+    await assert.rejects(()=>c.api(c.prefix+path,method,{}),error=>error.message.includes(step)&&error.message.includes('HTTP 403')&&error.message.includes('Resource not accessible'));
+  }
+});
+test('branch rule rejections are not retried as concurrent updates',async()=>{
+  const m=mock(original),c=new G.Publisher({repo:'demo/lut-lab',token:'unit-test-placeholder',fetchImpl:(url,request)=>{
+    if(request.method==='PATCH'){m.requests.push({method:'PATCH'});return Promise.resolve(rejection(422,'Repository rule violations found. Changes must be made through a pull request.'));}
+    return m.fetch(url,request);
+  }});
+  await c.connect();const before=m.head;
+  await assert.rejects(()=>c.publish(clone(original),[]),error=>error.kind==='rules'&&error.message.includes('分支规则'));
+  assert.equal(m.head,before);assert.equal(m.requests.filter(r=>r.method==='PATCH').length,1);
+});
+test('error diagnostics redact tokens and tolerate unavailable JSON and response headers',async()=>{
+  const token='unit-test-placeholder',c=new G.Publisher({repo:'demo/lut-lab',token,fetchImpl:async()=>rejection(403,token+' github_pat_fake123 ghp_fake456')});
+  await assert.rejects(()=>c.api(c.prefix+'/git/blobs','POST',{}),error=>{
+    assert.doesNotMatch(error.message,/unit-test-placeholder|github_pat_fake123|ghp_fake456/);assert.match(error.message,/已隐藏令牌/);return true;
+  });
+  const broken=new G.Publisher({repo:'demo/lut-lab',token,fetchImpl:async()=>({ok:false,status:403,json:async()=>{throw new Error('not JSON')}})});
+  await assert.rejects(()=>broken.api(broken.prefix+'/git/blobs','POST',{}),/Contents.*Read and write/);
+});
+test('a server error after applying the branch update is verified before reporting failure',async()=>{
+  const m=mock(original),c=new G.Publisher({repo:'demo/lut-lab',token:'unit-test-placeholder',fetchImpl:async(url,request)=>{
+    const result=await m.fetch(url,request);
+    return request.method==='PATCH'?rejection(500,'Internal Server Error'):result;
+  }});
+  await c.connect();const result=await c.publish(clone(original),[]);assert.equal(result.sha,m.head);
+});
+

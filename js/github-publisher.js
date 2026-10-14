@@ -12,11 +12,32 @@
     const paths=catalog=>new Set([...catalog.luts,...catalog.images].flatMap(item=>[item.path,item.thumb].filter(Boolean))),kept=paths(current);
     return [...paths(previous)].filter(path=>!kept.has(path)&&/^assets\/(luts|images)\//.test(path)&&!path.includes('\\')&&!path.split('/').some(x=>x==='..'||x==='.'||!x));
   }
+  function requestError(response,data,method,path,token){
+    const detail=(typeof data?.message==='string'?data.message:'').split(token).join('[已隐藏令牌]').replace(/github_pat_[a-z\d_]+|gh[pousr]_[a-z\d]+/gi,'[已隐藏令牌]').replace(/[\x00-\x1f]/g,' ').slice(0,500);
+    const header=name=>response.headers?.get?.(name),remaining=header('x-ratelimit-remaining'),retryAfter=header('retry-after');
+    let message,kind='request';
+    if(response.status===429||(response.status===403&&(remaining==='0'||retryAfter||/rate limit|abuse detection/i.test(detail)))){
+      kind='rate-limit';let seconds=Number(retryAfter);
+      if(!Number.isFinite(seconds)||seconds<=0)seconds=remaining==='0'?Math.ceil(Number(header('x-ratelimit-reset'))-Date.now()/1000):60;
+      message='GitHub 访问频率受限，请等待'+(Number.isFinite(seconds)&&seconds>0?Math.ceil(seconds)+' 秒':'一段时间')+'后再点击发布，待发布素材仍保留';
+    }else if(response.status===401){kind='auth';message='令牌无效或已过期，请重新连接';}
+    else if([403,409,422].includes(response.status)&&/protected branch|repository rule|rule violation|GH006|GH013|pull request/i.test(detail)){
+      kind='rules';message='GitHub 分支规则拒绝直接发布，请检查发布分支的保护规则';
+    }else if(response.status===403){
+      kind='permission';message='GitHub 拒绝此请求，请检查令牌是否选中此仓库';
+      if(method!=='GET')message+='，并将 Repository permissions → Contents 设为 Read and write；修改令牌权限后，在此页断开并重新连接，待发布素材仍保留';
+      else message+='并允许读取 Contents';
+    }else if(response.status===404)message='找不到仓库、发布分支或站点文件：请确认令牌已授权此仓库、地址正确并已上传完整站点';
+    else if(response.status===409||response.status===422)message='仓库版本发生变化或请求被拒绝，请核对具体原因后重试';
+    else message='GitHub 请求失败';
+    const step=method==='GET'?'读取仓库':path.endsWith('/git/blobs')?'上传素材':path.endsWith('/git/trees')?'保存素材清单':path.endsWith('/git/commits')?'创建提交':'更新发布分支';
+    const error=new Error(message+'（HTTP '+response.status+' · '+step+'）'+(detail?'\nGitHub：'+detail:''));error.status=response.status;error.kind=kind;if(response.status>=500)error.uncertain=true;return error;
+  }
   class Publisher{
     #token;#fetch;
     constructor({repo,token,branch='',root:folder='',fetchImpl=globalThis.fetch.bind(globalThis)}){Object.assign(this,repository(repo));this.branch=branch.trim();this.root=siteRoot(folder);this.#token=token.trim();if(!this.#token)throw new Error('请输入只授权此仓库的 GitHub 令牌');this.#fetch=fetchImpl;this.prefix='/repos/'+encodeURIComponent(this.owner)+'/'+encodeURIComponent(this.repo);this.baseline=null;}
     disconnect(){this.#token='';this.baseline=null;}
-    async api(path,method='GET',body){if(!this.#token)throw new Error('连接已断开，请重新授权');if(path!==this.prefix&&!path.startsWith(this.prefix+'/'))throw new Error('目标不是已连接的仓库');const headers={Accept:'application/vnd.github+json',Authorization:'Bearer '+this.#token,'X-GitHub-Api-Version':'2026-03-10'};if(body!==undefined)headers['Content-Type']='application/json';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),method==='GET'?30000:120000);let response;try{response=await this.#fetch('https://api.github.com'+path,{method,headers,body:body===undefined?undefined:JSON.stringify(body),redirect:'error',cache:'no-store',signal:controller.signal});}catch(_){const error=new Error('无法确认 GitHub 请求结果，请检查网络或仓库后重试');error.uncertain=true;throw error;}finally{clearTimeout(timer);}let data;try{data=await response.json();}catch(_){data={};}if(!response.ok){const error=new Error(response.status===401?'令牌无效或已过期，请重新连接':response.status===403?'GitHub 拒绝此操作：请检查该仓库的 Contents 读写权限或访问频率':response.status===404?'找不到仓库、发布分支或站点文件：请确认地址并先上传完整站点':response.status===409||response.status===422?'仓库版本发生变化或分支规则阻止直接提交，请核对后重试':`GitHub 请求失败 (${response.status})`);error.status=response.status;throw error;}return data;}
+    async api(path,method='GET',body){if(!this.#token)throw new Error('连接已断开，请重新授权');if(path!==this.prefix&&!path.startsWith(this.prefix+'/'))throw new Error('目标不是已连接的仓库');const headers={Accept:'application/vnd.github+json',Authorization:'Bearer '+this.#token,'X-GitHub-Api-Version':'2026-03-10'};if(body!==undefined)headers['Content-Type']='application/json';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),method==='GET'?30000:120000);let response;try{response=await this.#fetch('https://api.github.com'+path,{method,headers,body:body===undefined?undefined:JSON.stringify(body),redirect:'error',cache:'no-store',signal:controller.signal});}catch(_){const error=new Error('无法确认 GitHub 请求结果，请检查网络或仓库后重试');error.uncertain=true;throw error;}finally{clearTimeout(timer);}let data;try{data=await response.json();}catch(_){data={};}if(!response.ok)throw requestError(response,data,method,path,this.#token);return data;}
     assetPath(path){return this.root?this.root+'/'+path:path;}
     async latest(){const ref=await this.api(this.prefix+'/git/ref/heads/'+pathEncode(this.branch)),head=sha(ref.object?.sha),commit=await this.api(this.prefix+'/git/commits/'+head),tree=sha(commit.tree?.sha),file=await this.api(this.prefix+'/contents/'+pathEncode(this.assetPath('assets/catalog.js'))+'?ref='+head);if(file.type!=='file')throw new Error('assets/catalog.js 不是文件');let bytes;if(file.encoding==='base64'&&typeof file.content==='string')bytes=fromBase64(file.content);else{const blob=await this.api(this.prefix+'/git/blobs/'+sha(file.sha));if(blob.encoding!=='base64')throw new Error('无法读取仓库素材清单');bytes=fromBase64(blob.content);}return {head,tree,catalog:tools.parseCatalog(decoder.decode(bytes))};}
     async connect(){const info=await this.api(this.prefix);if(info.permissions?.push===false)throw new Error('当前账号没有此仓库的写入权限');if(!this.branch)this.branch=info.default_branch;this.baseline=(await this.latest()).catalog;return {owner:this.owner,repo:this.repo,branch:this.branch,root:this.root,catalog:this.baseline};}
@@ -31,9 +52,10 @@
         const tree=await this.api(this.prefix+'/git/trees','POST',{base_tree:latest.tree,tree:[...uploaded,...deletions,{path:this.assetPath('assets/catalog.js'),mode:'100644',type:'blob',content:source}]});
         const commit=await this.api(this.prefix+'/git/commits','POST',{message:'Update LUT LAB public library',tree:sha(tree.sha),parents:[latest.head]});
         const result={sha:commit.sha,catalog,source,deleted:deletions.length,commitUrl:'https://github.com/'+encodeURIComponent(this.owner)+'/'+encodeURIComponent(this.repo)+'/commit/'+commit.sha};
-        try{await this.api(this.prefix+'/git/refs/heads/'+pathEncode(this.branch),'PATCH',{sha:sha(commit.sha),force:false});this.baseline=catalog;return result;}catch(error){if(error.uncertain){try{if((await this.latest()).head===commit.sha){this.baseline=catalog;return result;}}catch(_){}}if(attempt===0&&[409,422].includes(error.status)){onProgress('仓库同时有更新，正在合并最新版本…');continue;}throw error;}
+        try{await this.api(this.prefix+'/git/refs/heads/'+pathEncode(this.branch),'PATCH',{sha:sha(commit.sha),force:false});this.baseline=catalog;return result;}catch(error){if(error.uncertain){try{if((await this.latest()).head===commit.sha){this.baseline=catalog;return result;}}catch(_){}}if(attempt===0&&[409,422].includes(error.status)&&error.kind!=='rules'){onProgress('仓库同时有更新，正在合并最新版本…');continue;}throw error;}
       }
     }
   }
   const api={Publisher,repository,siteRoot,toBase64,fromBase64,removedAssets};root.LUTGitHub=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:self);
+
