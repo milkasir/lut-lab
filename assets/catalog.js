@@ -1,0 +1,873 @@
+/* Library metadata from the supplied collection; input overrides confirmed by its owner. */
+window.LUT_CATALOG = [
+  {
+    "id": "lut-01",
+    "name": "5207E V3 Plady",
+    "filename": "5207E V3 Plady.cube",
+    "path": "assets/luts/lut-01.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "柯达 5207 电影胶片风格 E · 第 3 版",
+    "origin": "5207 是柯达 VISION3 250D 彩色电影负片的型号，属于日光平衡胶片；本文件按名称指向该原型。",
+    "uncertainty": "未找到作者直接解释 5207E 的 E 或本地 V3 更新内容，不把 E 正式译为探索版。柯达 VISION3 与本文件的 V3 不是同一层级的版本概念。",
+    "evidence": "原型已确认；具体 E/V3 版待核实",
+    "sources": [
+      {
+        "title": "Kodak VISION3 250D 5207/7207 官方产品资料",
+        "url": "https://www.kodak.com/content/products-brochures/Film/VISION-250D-Sellsheet_US_4PG-180829-SP_EN.pdf",
+        "claim": "确认 5207 是 VISION3 250D 中感光度、日光平衡彩色电影负片；不证明本 LUT 的具体制作方法。"
+      }
+    ],
+    "sha256": "f654e9dda2d52aacb4edb34ab7f0ee19040866981f38282ec0a96efe3dce556f",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-02",
+    "name": "5219D Plady",
+    "filename": "5219D Plady.cube",
+    "path": "assets/luts/lut-02.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "柯达 5219 电影胶片风格 D",
+    "origin": "5219 是柯达 VISION3 500T 彩色电影负片的型号，原型为钨丝灯平衡胶片；本文件按名称指向该原型。",
+    "uncertainty": "D 的作者定义未找到，不能把它直接解释为 Daylight（日光型）或 Dehancer。真实 5219 原型是 500T 钨丝灯型。",
+    "evidence": "原型已确认；D 版待核实",
+    "sources": [
+      {
+        "title": "Kodak VISION3 500T 5219/7219 官方产品资料",
+        "url": "https://www.kodak.com/content/products-brochures/Film/VISION3_5219_7219_Sell_Sheet_lo-res_es-ES.pdf",
+        "claim": "确认 5219/7219 为 VISION3 500T，色温平衡 3200 K。"
+      }
+    ],
+    "sha256": "9107f859247c513b9571cc43577a227c879aa1a478e8fa1032d1f365b9b99307",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-03",
+    "name": "C200SP Plady",
+    "filename": "C200SP Plady.cube",
+    "path": "assets/luts/lut-03.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士 C200 风格 · SP 版（对应关系待核实）",
+    "origin": "名称可能指 FUJICOLOR C200 彩色负片及富士 SP3000 扫描风格。富士官方能确认 C200 原型，PladyChan 的公开胶片系列能确认 SP3000 命名习惯。",
+    "uncertainty": "未找到 C200SP 的作者原文。作者 2025-01-23 发布中明确列的是 C100SP，不能用该文把此文件改名成 C100，也不能据此断言 C200SP 的实际采样来源。",
+    "evidence": "原型已确认；文件名推断",
+    "sources": [
+      {
+        "title": "Fujifilm Films：FUJICOLOR C200",
+        "url": "https://www.fujifilm.com/nz/en/consumer/films/negative-and-reversal",
+        "claim": "确认 C200 是 ISO 200 彩色负片，适合日光与闪光灯拍摄。"
+      },
+      {
+        "title": "PladyChan：富士柯达胶片LUT套装 | S9 S52",
+        "url": "https://www.bilibili.com/video/BV15xfYY3EDa",
+        "claim": "作者公开 SP3000 系列，但该篇列出的是 C100SP，不是 C200SP。"
+      }
+    ],
+    "sha256": "7e8bee7018c3ea69ce1ab415404e28b0040639117acd02bd7b333adbdb5a1448",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-04",
+    "name": "CC V3_3 Plady",
+    "filename": "CC V3_3 Plady.cube",
+    "path": "assets/luts/lut-04.cube",
+    "category": "富士风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士经典正片仿色 V3_3（Plady）",
+    "origin": "CC 对应 Classic Chrome。Plady 的富士仿色套装面向松下标准格调；富士原型重现20世纪纪实杂志的低饱和与硬朗阴影。作者称 CC V3 比 V2 更贴近真实色彩并保留更多细节。",
+    "uncertainty": "作者公开说明确认 V3，未找到 V3_3 的版本日志；不得把文件名直接写成经确认的 3.3 正式版。不是富士官方 LUT。",
+    "evidence": "作者系列与品牌原型已确认；本地精确版本未认证",
+    "sources": [
+      {
+        "title": "PladyChan：松下直出这富士感！NC、CC、NN、RA全系列更新（2025-05-30）",
+        "url": "https://www.bilibili.com/video/BV1SN7JzaEAn/",
+        "claim": "作者本人确认 NC/CC/NN/RA 富士仿色系列与标准格调输入；说明 NC V3 和 CC V3 的改版方向，但没有本地细分版本清单。"
+      },
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      }
+    ],
+    "sha256": "6d8fcedcecdfa565d77c1c6ad4b703682f0e353b1ec9618e0d9c6d7606b7fb22",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-05",
+    "name": "FLog2_NC",
+    "filename": "FLog2_NC.cube",
+    "path": "assets/luts/lut-05.cube",
+    "category": "富士 Log",
+    "base": "FLOG2",
+    "grid": 33,
+    "cn": "F-Log2 · NC 风格",
+    "origin": "F-Log2 是富士 Log 编码名，NC 在本批命名语境下很可能指经典负片。富士确有按机型发布的官方 3D-LUT，但本地名称没有作者署名或可核对的型号、版本。",
+    "uncertainty": "维护者已实测确认使用 F-Log2 转换。原始文件的 VLOG 注释保留；制作来源与具体相机版本仍按原资料记录。",
+    "evidence": "F-Log2 输入由维护者实测确认",
+    "sources": [
+      {
+        "title": "富士官方 3D-LUT 下载页",
+        "url": "https://www.fujifilm-x.com/global/support/download/lut/",
+        "claim": "官方 LUT 按相机型号提供下载；下载页本身没有 FLog2_NC、FLog2_PROVIA 这两个本地简称。"
+      },
+      {
+        "title": "松下官方：LUT库与 LUT 文件的基本照片风格",
+        "url": "https://eww.pavc.panasonic.co.jp/dscoi/DC-L10/html/DC-L10_DVQP3513_sch/0077.html",
+        "claim": "#LUMIXPHOTOSTYLE STD 对应标准，VLOG 对应 V-Log；标签决定基本照片风格，并可用文本编辑器添加。"
+      },
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      }
+    ],
+    "sha256": "14d8b4ebfde7aff9bc2c7afcdc5c8d79f52ad2d70bdb5f4671a4a9a11f18ee8f",
+    "ambiguous": false,
+    "declaredBase": "VLOG",
+    "inputVerified": true
+  },
+  {
+    "id": "lut-06",
+    "name": "FLog2_PROVIA",
+    "filename": "FLog2_PROVIA.cube",
+    "path": "assets/luts/lut-06.cube",
+    "category": "富士 Log",
+    "base": "FLOG2",
+    "grid": 33,
+    "cn": "F-Log2 · PROVIA 标准风格",
+    "origin": "PROVIA/标准是富士胶片模拟名，原型是 FUJICHROME PROVIA 专业反转片；富士官方也发布了含 PROVIA 的 F-Log2/F-Log2 C 转换 LUT。上述事实只能解释名字，不能证明本地文件来源。",
+    "uncertainty": "维护者已实测确认使用 F-Log2 转换。原始文件的 VLOG 注释保留；制作来源与具体相机版本仍按原资料记录。",
+    "evidence": "F-Log2 输入由维护者实测确认",
+    "sources": [
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      },
+      {
+        "title": "富士官方 GFX ETERNA 55 发布说明（2025-09-11）",
+        "url": "https://www.fujifilm-x.com/it-it/news/fujifilm-gfx-eterna-55-la-nuova-camera-cinematografica/",
+        "claim": "官方说明提供面向 F-Log2/F-Log2 C 的胶片模拟转换 LUT，包括 PROVIA/Standard；只证明官方同类 LUT 存在。"
+      },
+      {
+        "title": "富士官方 3D-LUT 下载页",
+        "url": "https://www.fujifilm-x.com/global/support/download/lut/",
+        "claim": "官方 LUT 按相机型号提供下载；下载页本身没有 FLog2_NC、FLog2_PROVIA 这两个本地简称。"
+      },
+      {
+        "title": "松下官方：LUT库与 LUT 文件的基本照片风格",
+        "url": "https://eww.pavc.panasonic.co.jp/dscoi/DC-L10/html/DC-L10_DVQP3513_sch/0077.html",
+        "claim": "#LUMIXPHOTOSTYLE STD 对应标准，VLOG 对应 V-Log；标签决定基本照片风格，并可用文本编辑器添加。"
+      }
+    ],
+    "sha256": "997c2fc817437b18eab250d069399e2e01d16398a85e3a22e991f5696d9cbbf3",
+    "ambiguous": false,
+    "declaredBase": "VLOG",
+    "inputVerified": true
+  },
+  {
+    "id": "lut-07",
+    "name": "GR2-P V3 Plady",
+    "filename": "GR2-P V3 Plady.cube",
+    "path": "assets/luts/lut-07.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR II 正片仿色 V3（Plady）",
+    "origin": "作者 2024 年套装明确将 GR2-P 定义为 GR2 正片仿色，搭配标准格调。GR2 是相机代际，P 对应正片，不是 LUT 的第2版。",
+    "uncertainty": "发布页没有 V3 的变更和文件校验。只能确认系列含义，不能确认是某次公开更新的同一文件。",
+    "evidence": "作者系列名称已确认；本地 V3 未认证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      }
+    ],
+    "sha256": "8d62907c70b0a627e72aa8dd2471860efaa5ca41ba8fb8911c166ffe03c5fca1",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-08",
+    "name": "GR2-PB V3 Plady",
+    "filename": "GR2-PB V3 Plady.cube",
+    "path": "assets/luts/lut-08.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR II 正片·PB 分支 V3（后缀待核实）",
+    "origin": "GR2-P 这一基本系列由作者本人定义为理光 GR2 正片仿色；本地文件是在此名称后增加一个字母的分支。",
+    "uncertainty": "PB 的末字母可能对应 Blue/蓝，但未找到作者本人对本地分支的解释，所以不作为正式中文名或确定风格。V3 的具体更新也未认证。",
+    "evidence": "基础系列可确认；分支含义与精确版本待考证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      }
+    ],
+    "sha256": "5584ec545ed96d73ac735a8a037490ea68162477c06f6961764070507caddd4f",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-09",
+    "name": "GR2-PG V3 Plady",
+    "filename": "GR2-PG V3 Plady.cube",
+    "path": "assets/luts/lut-09.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR II 正片·PG 分支 V3（后缀待核实）",
+    "origin": "GR2-P 这一基本系列由作者本人定义为理光 GR2 正片仿色；本地文件是在此名称后增加一个字母的分支。",
+    "uncertainty": "PG 的末字母可能对应 Green/绿，但未找到作者本人对本地分支的解释，所以不作为正式中文名或确定风格。V3 的具体更新也未认证。",
+    "evidence": "基础系列可确认；分支含义与精确版本待考证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      }
+    ],
+    "sha256": "b2f7f45ec3b0cc2fd710126f44e68a0bdf589a59b30cb743369764df35144ee7",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-10",
+    "name": "GR2-PY V3 Plady",
+    "filename": "GR2-PY V3 Plady.cube",
+    "path": "assets/luts/lut-10.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR II 正片·PY 分支 V3（后缀待核实）",
+    "origin": "GR2-P 这一基本系列由作者本人定义为理光 GR2 正片仿色；本地文件是在此名称后增加一个字母的分支。",
+    "uncertainty": "PY 的末字母可能对应 Yellow/黄，但未找到作者本人对本地分支的解释，所以不作为正式中文名或确定风格。V3 的具体更新也未认证。",
+    "evidence": "基础系列可确认；分支含义与精确版本待考证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      }
+    ],
+    "sha256": "ec34acf2d964f9cd80e4217740f2c833403af5a77e7fa1acecfeb635fce48317",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-11",
+    "name": "GR3-N-V3 Plady",
+    "filename": "GR3-N-V3 Plady.cube",
+    "path": "assets/luts/lut-11.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR III 负片仿色 V3（Plady）",
+    "origin": "作者明确 GR3-N 为 GR3 负片，标准格调使用。理光官方确有 Negative Film 影像控制，设计参照多种负片，平衡稍褪色的相纸观感与清晰色彩。",
+    "uncertainty": "本地 V3 的发布日期、变更和与作者分发文件的一致性未核实；不是理光官方 LUT。",
+    "evidence": "作者系列与品牌原型已确认；本地 V3 未认证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      },
+      {
+        "title": "理光官方 GR III/GR IIIx 功能扩展：Negative Film",
+        "url": "https://www.ricoh-imaging.co.jp/english/products/gr-3/firmup/?s=08",
+        "claim": "GR III 1.70 / GR IIIx 1.20 新增 Negative Film；说明其负片与褪色相纸观感。"
+      }
+    ],
+    "sha256": "45d6e46636c7ca60b4bb0b6b3884d9da0ce7fbed4d37697b2fa0e62dec8b6bc4",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-12",
+    "name": "GR3-P-V3 Plady",
+    "filename": "GR3-P-V3 Plady.cube",
+    "path": "assets/luts/lut-12.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR III 正片仿色 V3（Plady）",
+    "origin": "作者明确 GR3-P 为 GR3 正片，标准格调使用。理光 GR III/IIIx 官方确有 Positive Film 正片影像控制。",
+    "uncertainty": "未找到 V3 单独变更说明或作者文件校验；此文件的正片仿色不能等同相机整套成像处理。",
+    "evidence": "作者系列与品牌原型已确认；本地 V3 未认证",
+    "sources": [
+      {
+        "title": "PladyChan：理光GR套装 S52 S9实时LUT+LR预设（2024-06-09）",
+        "url": "https://www.bilibili.com/video/BV1Vn4y1R798/",
+        "claim": "作者本人逐项定义 GR2-P、GR3-P、GR3-N，均搭配标准格调；未写 V3 及 PB/PG/PY。"
+      },
+      {
+        "title": "理光官方 GR III/GR IIIx：表现力与 Image Control",
+        "url": "https://www.ricoh-imaging.co.jp/english/products/gr-3/feature/03.html",
+        "claim": "官方影像控制包括 Positive Film 正片与 Negative Film 负片。"
+      }
+    ],
+    "sha256": "90f22ab1263ac91a1d98b70dcf4bab9c1e62c1c4ca4a0785d0730f878dd3ad08",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-13",
+    "name": "GR4-CineG Plady",
+    "filename": "GR4-CineG Plady.cube",
+    "path": "assets/luts/lut-13.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR IV 电影绿调仿色（Plady署名）",
+    "origin": "名称高度对应 GR IV 的 Cinema (Green)。理光官方手册使用 Cine G 缩写，说明它让暗部偏绿；这是 GR IV 新增的电影风格之一。",
+    "uncertainty": "没有找到 Plady 本人对 GR4-CineG 这个精确文件的可核验发布说明；归属目前来自本地署名，不能宣称为官方或精确复刻。",
+    "evidence": "品牌原型与缩写已确认；本地作者版本关联未认证",
+    "sources": [
+      {
+        "title": "理光官方 GR IV：Image Control",
+        "url": "https://www.ricoh-imaging.co.jp/english/products/gr-4/feature/03.html",
+        "claim": "GR IV 新增 Cinema (Yellow) 与 Cinema (Green) 两种电影模式；前者庄重、后者清冷。"
+      },
+      {
+        "title": "理光官方 GR IV 英文手册，第94页",
+        "url": "https://www.ricoh-imaging.co.jp/resources/english/support/man-pdf/gr-4_en.pdf",
+        "claim": "机内缩写确为 Cine Y / Cine G；Yellow 为偏黄电影影像，Green 的暗部偏绿。"
+      }
+    ],
+    "sha256": "69573450896ec80985834f7531bea7dbd55ca268bb45338c8bfca4f55801d90e",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-14",
+    "name": "GR4-CineY Plady",
+    "filename": "GR4-CineY Plady.cube",
+    "path": "assets/luts/lut-14.cube",
+    "category": "理光风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "理光 GR IV 电影黄调仿色（Plady署名）",
+    "origin": "名称高度对应 GR IV 的 Cinema (Yellow)。理光官方手册使用 Cine Y 缩写，说明它产生偏黄的电影影像。",
+    "uncertainty": "没有找到 Plady 本人对 GR4-CineY 这个精确文件的可核验发布说明；归属目前来自本地署名，不能宣称为官方或精确复刻。",
+    "evidence": "品牌原型与缩写已确认；本地作者版本关联未认证",
+    "sources": [
+      {
+        "title": "理光官方 GR IV：Image Control",
+        "url": "https://www.ricoh-imaging.co.jp/english/products/gr-4/feature/03.html",
+        "claim": "GR IV 新增 Cinema (Yellow) 与 Cinema (Green) 两种电影模式；前者庄重、后者清冷。"
+      },
+      {
+        "title": "理光官方 GR IV 英文手册，第94页",
+        "url": "https://www.ricoh-imaging.co.jp/resources/english/support/man-pdf/gr-4_en.pdf",
+        "claim": "机内缩写确为 Cine Y / Cine G；Yellow 为偏黄电影影像，Green 的暗部偏绿。"
+      }
+    ],
+    "sha256": "5db7a2a7f002a5dd8546879cf3c19cbd1cd14ca0ebf06953336eb7d86b6e8f94",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-15",
+    "name": "LOMO92 SK Plady",
+    "filename": "LOMO92 SK Plady.cube",
+    "path": "assets/luts/lut-15.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "LomoChrome Color ’92 复古胶片风格 · SK 版",
+    "origin": "PladyChan 2025-09-30 发布的 LOMO92 模仿 Lomography LomoChrome Color ’92，取向为 90 年代、低保真和怀旧影像。",
+    "uncertainty": "作者说明整体做过肤色优化，但未明确 SK 缩写含义，不能仅凭 SK 就断言它等于 Skin 或某一专门人像版。",
+    "evidence": "作者一手确认系列；SK 后缀待核实",
+    "sources": [
+      {
+        "title": "PladyChan：穿越90年代 | 仿LOMO92 梦核之神 | 松下LUT",
+        "url": "https://www.bilibili.com/video/BV13HnzzPEpy/",
+        "claim": "作者明确给出 LOMOChrome Color’92 原型，并说明 LUT 有肤色调整。"
+      },
+      {
+        "title": "Lomography：LomoChrome Color ’92 35 mm ISO 400",
+        "url": "https://shop.lomography.com/us/lomochrome-color-92-35-mm-iso-400?source=nl_color_92_reacts",
+        "claim": "品牌确认此为 ISO 400 彩色负片，命名与 90 年代怀旧有关。"
+      }
+    ],
+    "sha256": "d59fe99a6b4f4e5d5b49ce709aea5c93cabc938a6052de5f8125fedf1b90d81f",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-16",
+    "name": "LOMO92 V2 Plady",
+    "filename": "LOMO92 V2 Plady.cube",
+    "path": "assets/luts/lut-16.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "LomoChrome Color ’92 复古胶片风格 · 第 2 版",
+    "origin": "原型与作者公开 LOMO92 系列一致：Lomography 的 LomoChrome Color ’92 彩色负片，偏向 90 年代怀旧氛围。",
+    "uncertainty": "未找到 V2 相比初版的公开变更说明，不能把它当作 SK 的替代品或自行断言二者肤色差异。",
+    "evidence": "作者一手确认系列；V2 变更待核实",
+    "sources": [
+      {
+        "title": "PladyChan：穿越90年代 | 仿LOMO92 梦核之神 | 松下LUT",
+        "url": "https://www.bilibili.com/video/BV13HnzzPEpy/",
+        "claim": "确认 LOMO92 系列灵感；没有单独解释本地 V2。"
+      },
+      {
+        "title": "Lomography：LomoChrome Color ’92 35 mm ISO 400",
+        "url": "https://shop.lomography.com/us/lomochrome-color-92-35-mm-iso-400?source=nl_color_92_reacts",
+        "claim": "确认真实胶片原型。"
+      }
+    ],
+    "sha256": "8c79dc510f700173e97c4bb32152eaea10d1994bf5fdcb5fb492cb3a65d3bc36",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-17",
+    "name": "NC V3_5 Plady",
+    "filename": "NC V3_5 Plady.cube",
+    "path": "assets/luts/lut-17.cube",
+    "category": "富士风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士经典负片仿色 V3_5（Plady）",
+    "origin": "NC 在作者系列中指经典负片（Classic Neg.，不能按英文首字母改写为 CN）。富士原型基于 SUPERIA 彩色负片；作者说明 NC V3 融合其富士 NC 仿色与 DAZZ FXN 的影调取向，并优化动态范围与肤色。",
+    "uncertainty": "公开发布文案未列 V3_5 的变更；本地版是否等于公开 V3 或后续 3.5，不能确认。不是富士官方原始曲线。",
+    "evidence": "作者系列与品牌原型已确认；本地精确版本未认证",
+    "sources": [
+      {
+        "title": "PladyChan：松下直出这富士感！NC、CC、NN、RA全系列更新（2025-05-30）",
+        "url": "https://www.bilibili.com/video/BV1SN7JzaEAn/",
+        "claim": "作者本人确认 NC/CC/NN/RA 富士仿色系列与标准格调输入；说明 NC V3 和 CC V3 的改版方向，但没有本地细分版本清单。"
+      },
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      }
+    ],
+    "sha256": "90e588766c644de733caaa41afb07b5c1fbd308f9ffbf00cbee4f05eb91ad2dd",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-18",
+    "name": "NN V2 Plady",
+    "filename": "NN V2 Plady.cube",
+    "path": "assets/luts/lut-18.cube",
+    "category": "富士风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士怀旧负片仿色 V2（Plady）",
+    "origin": "NN 对应 Nostalgic Neg. 怀旧负片。品牌原型联系 New American Color 摄影风格；作者的 NN 同属标准格调仿色套装，强调暖调与蓝色形成的冷暖关系。",
+    "uncertainty": "已找到作者 NN 系列说明，未找到本地 V2 的单独发布和数值校验；不能据此承诺与富士机内效果一致。",
+    "evidence": "作者系列与品牌原型已确认；本地 V2 未认证",
+    "sources": [
+      {
+        "title": "PladyChan：松下直出这富士感！NC、CC、NN、RA全系列更新（2025-05-30）",
+        "url": "https://www.bilibili.com/video/BV1SN7JzaEAn/",
+        "claim": "作者本人确认 NC/CC/NN/RA 富士仿色系列与标准格调输入；说明 NC V3 和 CC V3 的改版方向，但没有本地细分版本清单。"
+      },
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      },
+      {
+        "title": "富士官方 NOSTALGIC Neg.：Nostalgia and Reminiscence",
+        "url": "https://www.fujifilm-x.com/en-in/products/film-simulation/nostalgic-neg",
+        "claim": "怀旧负片与 New American Color 摄影传统、琥珀暖调的设计关联。"
+      }
+    ],
+    "sha256": "632f5606c4bbc82d1d89da29cbab5853b771458230c5f6e78c5def00c87ebb2e",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-19",
+    "name": "OT MovusV6-Plady",
+    "filename": "OT MovusV6-Plady.cube",
+    "path": "assets/luts/lut-19.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "Movus 电影感调色 · 第 6 版（OT 前缀保留）",
+    "origin": "PladyChan 2024-03-22 发布说明明确 MovusV6 是 MovusV2 继续迭代到第六版；降低风格强度，扩大适用场景。",
+    "uncertainty": "Movus 是创作名称，没有可靠固定中文词义，保留原名。OT 前缀未核实，不推断为输入色域或官方技术规格。",
+    "evidence": "作者一手确认 MovusV6",
+    "sources": [
+      {
+        "title": "PladyChan：电影感实时LUT+LR预设 一套2个",
+        "url": "https://www.bilibili.com/video/BV1cK421i79t/",
+        "claim": "直接确认 MovusV6 的版本来历，以及偏向城市、晴天和大光比场景的设计说明。"
+      }
+    ],
+    "sha256": "a2e622f6e328b1de42efc3bd75b03d27e0b6bd1b229e479442abcbedbffee951",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-20",
+    "name": "OT STD Portry-Plady",
+    "filename": "OT STD Portry-Plady.cube",
+    "path": "assets/luts/lut-20.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "Portry 创作调色／标准基础（OT 前缀保留）",
+    "origin": "文件署名 Plady；STD 与本地标准照片格调标签一致，Portry 保留创作名。",
+    "uncertainty": "未找到 Portry 的作者原文，不能擅自更正成 Portra、Portrait 或 Poetry，也不把它正式译为人像或诗意。OT 的含义未核实。",
+    "evidence": "待核实",
+    "sources": [],
+    "sha256": "2ee4417be476fa450182bc861d5d630e6d3392f0663aee5f7fe268e7eda5be53",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-21",
+    "name": "P400SP V2 Plady",
+    "filename": "P400SP V2 Plady.cube",
+    "path": "assets/luts/lut-21.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士 Premium 400“花卉卷”· SP3000 风格第 2 版",
+    "origin": "作者 2025-01-23 发布明确写明 P400SP 复刻富士 Premium 400“花卉卷”，基于富士 SP3000 扫描采样。",
+    "uncertainty": "P400SP 不是柯达 Portra 400。V2 的具体改动和当前文件与原发布的逐字节对应未核实。",
+    "evidence": "作者一手确认系列；V2 变更待核实",
+    "sources": [
+      {
+        "title": "PladyChan：富士柯达胶片LUT套装 | S9 S52",
+        "url": "https://www.bilibili.com/video/BV15xfYY3EDa",
+        "claim": "直接确认 P400SP 对应富士 Premium 400，系列基于富士 SP3000 扫描采样。"
+      }
+    ],
+    "sha256": "01025211af866935ce5236ded97c4d0a513151a99cb9703739a800a6fb215050",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-22",
+    "name": "Polaroid Plady",
+    "filename": "Polaroid Plady.cube",
+    "path": "assets/luts/lut-22.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "宝丽来即显胶片风格",
+    "origin": "Polaroid 是宝丽来品牌名，以即时成像相机和相纸著称；LUT 名称显示它以该视觉印象命名。",
+    "uncertainty": "未找到此 LUT 的作者原始说明，不能判断具体模拟 SX-70、600、i-Type，或只是泛化的即显照片配色。名称不代表宝丽来官方出品。",
+    "evidence": "品牌原型已确认；本 LUT 来源待核实",
+    "sources": [
+      {
+        "title": "Polaroid：A New Photobook Honors the History and Future of Polaroid Photography",
+        "url": "https://shop-us.polaroid.com/blogs/developing/polaroid-now-book",
+        "claim": "仅证明品牌与即时成像摄影的历史；不证明本 LUT 的具体片种或制作来源。"
+      }
+    ],
+    "sha256": "a4deb589e5ad2c9b73c33d3440e4bd24d2ec989b65fb2615d0460a7d89c74f80",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-23",
+    "name": "PolusV2-Plady",
+    "filename": "PolusV2-Plady.cube",
+    "path": "assets/luts/lut-23.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "Polus 暖调电影风格 · 第 2 版",
+    "origin": "PladyChan 的公开电影感套装说明把 Polus 定义为暖调电影感调色，适合城市、咖啡厅、森林等暖色场景。",
+    "uncertainty": "Polus 是创作名称，未查到作者给定中文名；不按拉丁词源硬译。具体 V2 相比原版变化未核实。",
+    "evidence": "作者一手确认系列；V2 变更待核实",
+    "sources": [
+      {
+        "title": "PladyChan：电影感实时LUT+LR预设 一套2个",
+        "url": "https://www.bilibili.com/video/BV1cK421i79t/",
+        "claim": "直接给出 Polus 的暖调电影风格定位；未单独提供 V2 更新表。"
+      }
+    ],
+    "sha256": "833f8e3272dc3b21af890999c3f215b7412f6c23744bc8fcbf9e5abff97310a8",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-24",
+    "name": "Portra400SP V2 Plady",
+    "filename": "Portra400SP V2 Plady.cube",
+    "path": "assets/luts/lut-24.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "柯达 Portra 400“炮塔”· SP3000 风格第 2 版",
+    "origin": "作者的炮塔 400 套装分 SP、HS、X5 三条扫描路线；SP 明确指富士 SP3000，Portra 是柯达专业彩色负片系列，炮塔为常见昵称。",
+    "uncertainty": "作者初始发布确认 SP 扫描路线，但未说明此 V2 的具体更新，不能与 P400SP 或 PT400SP 自动合并。",
+    "evidence": "作者一手确认系列；V2 变更待核实",
+    "sources": [
+      {
+        "title": "PladyChan：柯达炮塔400 LUT+LR预设",
+        "url": "https://www.bilibili.com/video/BV1ZpxmeXEpP/",
+        "claim": "发布说明明确 Portra400 SP=富士 SP3000 扫描采样，HS=诺日士 HS1800，X5=哈苏 X5；作者在 B站公开索引中标为 PladyChan。"
+      }
+    ],
+    "sha256": "84071f4ce061ef983e9b89436483807549f67608ad500350ebe4ee0a74705c46",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-25",
+    "name": "Portra400X5 D2 Plady",
+    "filename": "Portra400X5 D2 Plady.cube",
+    "path": "assets/luts/lut-25.cube",
+    "category": "Cinelike D2",
+    "base": "CNED2",
+    "grid": 33,
+    "cn": "柯达 Portra 400“炮塔”· 哈苏 X5 扫描风格／D2 版",
+    "origin": "作者炮塔 400 套装中的 X5 版本来自哈苏 X5 扫描后校色采样；本地文件额外带 D2 后缀。",
+    "uncertainty": "本地 #LUMIXPHOTOSTYLE CNED2 对应电影动态范围 2，应以该输入基础使用；未找到作者为这个完整文件名单独发布的说明。不能把 X5 误作哈苏数码相机型号。",
+    "evidence": "作者一手确认 X5；D2 结合本地标签判断",
+    "sources": [
+      {
+        "title": "PladyChan：柯达炮塔400 LUT+LR预设",
+        "url": "https://www.bilibili.com/video/BV1ZpxmeXEpP/",
+        "claim": "明确 Portra400 X5 为哈苏 X5 扫描后校色采样；不直接解释 D2。"
+      }
+    ],
+    "sha256": "1b296ea15a8d7fd7c7b4d0fa8a93d00a450b19e46b1a26e6f141d257486d1026",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-26",
+    "name": "PT400L Plady",
+    "filename": "PT400L Plady.cube",
+    "path": "assets/luts/lut-26.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "PT400L 胶片风格（原缩写保留）",
+    "origin": "文件署名 Plady。PT400 的写法疑似 Portra 400 系列简写，但没有取得作者公开对应表，不能确认为同一款。",
+    "uncertainty": "PT、L 均未得到一手解释。L 可能是创作名或版本分支，不能擅自译为 Luna、Low、Light 或徕卡；不与 P400SP/Portra400 合并。",
+    "evidence": "待核实",
+    "sources": [],
+    "sha256": "10473611d3fd0944bd689333d5596a3782b5c796f85f4a82fd3082aac01ebf49",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-27",
+    "name": "PT400SP V3 Plady",
+    "filename": "PT400SP V3 Plady.cube",
+    "path": "assets/luts/lut-27.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "PT400SP 胶片风格 · 第 3 版（原缩写保留）",
+    "origin": "名称可能是 Plady 的 Portra 400／SP3000 系列缩写，尚无直接作者资料把 PT400SP 与 Portra400SP 对上。",
+    "uncertainty": "SP 在作者已公开的胶片系列中指 SP3000，但完整 PT400SP 的身份及 V3 更新内容仍未证实；应保留为独立 LUT。",
+    "evidence": "待核实",
+    "sources": [
+      {
+        "title": "PladyChan：柯达炮塔400 LUT+LR预设",
+        "url": "https://www.bilibili.com/video/BV1ZpxmeXEpP/",
+        "claim": "仅提供作者 Portra400 SP 命名背景；不能证明 PT400SP 就是该 LUT 的后续版本。"
+      }
+    ],
+    "sha256": "efadb8adc041b66040d27cf12eab61f7f431344d06de41f8655984f5f50e6453",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-28",
+    "name": "Q Contemporary-Plady",
+    "filename": "Q Contemporary-Plady.cube",
+    "path": "assets/luts/lut-28.cube",
+    "category": "徕卡风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "仿徕卡 Q3“现代”风格",
+    "origin": "作者 2024-06-21 的仿徕卡套装明确 Q Contemporary 模仿 Leica Q3 的 Contemporary 滤镜，并调整适合松下色彩；作者译名为徕卡现代。",
+    "uncertainty": "这是 Plady 的模拟及再调校，不是徕卡官方 LUT，也不保证与 Q3 原机输出完全相同。",
+    "evidence": "作者与品牌一手确认",
+    "sources": [
+      {
+        "title": "PladyChan：仿徕卡毒德套装实时LUT+LR预设",
+        "url": "https://www.bilibili.com/video/BV1d4421Q7nb/",
+        "claim": "直接说明 Q Contemporary 名称、原型、标准基础和较自然明亮的定位。"
+      },
+      {
+        "title": "Leica Looks 官方介绍",
+        "url": "https://leica-camera.com/en-AU/photography/leica-looks",
+        "claim": "确认 Contemporary 是 Leica Looks 的风格名，品牌说明为明亮暗部、自然色彩和轻微红调。"
+      }
+    ],
+    "sha256": "ea4cf7f0979f214970de3c9fec93b7cea6298713088f98309797850071633e66",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-29",
+    "name": "Q Eternal-Plady",
+    "filename": "Q Eternal-Plady.cube",
+    "path": "assets/luts/lut-29.cube",
+    "category": "徕卡风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "仿徕卡 Q3“永恒”风格",
+    "origin": "作者仿徕卡套装明确 Q Eternal 模仿 Leica Q3 的 Eternal 滤镜，并为松下提高泛用性及调整人像肤色。",
+    "uncertainty": "Eternal 应译永恒，不能与富士 ETERNA 电影模拟混同。本文件是作者模拟，不是徕卡官方发布。",
+    "evidence": "作者与品牌一手确认",
+    "sources": [
+      {
+        "title": "PladyChan：仿徕卡毒德套装实时LUT+LR预设",
+        "url": "https://www.bilibili.com/video/BV1d4421Q7nb/",
+        "claim": "直接给出徕卡永恒译名、Q3 原型，以及高对比高饱和/高光洋红暗部蓝的设计说明。"
+      },
+      {
+        "title": "Leica Looks 官方介绍",
+        "url": "https://leica-camera.com/en-AU/photography/leica-looks",
+        "claim": "确认 Eternal 为 Leica Looks，原风格强调对比、饱和及洋红色调。"
+      }
+    ],
+    "sha256": "d7ba8c1807b7a2cb993d6a4e4b462093087a689dc27315adeca667804146a3a1",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-30",
+    "name": "RA V2 Plady",
+    "filename": "RA V2 Plady.cube",
+    "path": "assets/luts/lut-30.cube",
+    "category": "富士风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "富士 REALA ACE 仿色 V2（Plady）",
+    "origin": "RA 指向富士 REALA ACE 胶片模拟。富士原型将忠实色彩与较硬影调结合；作者将 RA 列入富士标准格调套装，并另做过 RA100 变体。REALA ACE 是产品名，保留英文更准确。",
+    "uncertainty": "未找到 RA V2 独立版本说明；作者提及的 RA100 是另一个变体，不能把过期 Reala、洋红高光等 RA100 特征直接赋予本地 RA V2。",
+    "evidence": "作者系列与品牌原型已确认；本地 V2 未认证",
+    "sources": [
+      {
+        "title": "PladyChan：松下直出这富士感！NC、CC、NN、RA全系列更新（2025-05-30）",
+        "url": "https://www.bilibili.com/video/BV1SN7JzaEAn/",
+        "claim": "作者本人确认 NC/CC/NN/RA 富士仿色系列与标准格调输入；说明 NC V3 和 CC V3 的改版方向，但没有本地细分版本清单。"
+      },
+      {
+        "title": "富士官方 X-T50：胶片模拟说明",
+        "url": "https://www.fujifilm-x.com/zh-cn/products/cameras/x-t50/",
+        "claim": "官方确认 Classic Chrome/经典正片、CLASSIC Neg./经典负片、Nostalgic Neg./怀旧负片、REALA ACE 和 PROVIA/标准的名称与风格原型。"
+      }
+    ],
+    "sha256": "f9b18812da4757e8786a0972a2531aabca10a00be2495478cb566ef0f4cedca6",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-31",
+    "name": "SKIN V2-Plady",
+    "filename": "SKIN V2-Plady.cube",
+    "path": "assets/luts/lut-31.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "肤色调整 · 第 2 版",
+    "origin": "Skin 的字面义是皮肤/肤色。作者早期奶油肌 LUT 说明会提亮橙色区域；后续公开 SkinV3 也定位为提亮肤色的功能型 LUT。",
+    "uncertainty": "未找到本地 SKIN V2 的独立说明，不能把 SkinV3 的更新内容直接套给 V2；颜色选择也会影响同色系物体，不能理解为识别人脸的磨皮算法。",
+    "evidence": "作者一手确认功能系列；V2 完整对应待核实",
+    "sources": [
+      {
+        "title": "PladyChan：松下S52超实用原图感奶油肌LUT",
+        "url": "https://www.bilibili.com/video/BV1rF4111713/",
+        "claim": "作者说明早期肤色 LUT 通过提亮橙色区域工作，橙色物体也受影响。"
+      },
+      {
+        "title": "PladyChan：松下直出这富士感！NC、CC、NN、RA全系列更新",
+        "url": "https://www.bilibili.com/video/BV1SN7JzaEAn/",
+        "claim": "作者将 SkinV3 定位为只提肤色的功能性 LUT；用于确认系列背景，不代表 V2 的逐项功能。"
+      }
+    ],
+    "sha256": "a952502c955fd6ad645f6f00da2d269a8a95b2469b3eefa7e97e0eeca240dc6e",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-32",
+    "name": "UM400SP V2_1 Plady",
+    "filename": "UM400SP V2_1 Plady.cube",
+    "path": "assets/luts/lut-32.cube",
+    "category": "胶片风格",
+    "base": "STD",
+    "grid": 33,
+    "cn": "柯达 UltraMax 400 全能卷 · SP3000 风格 V2_1",
+    "origin": "作者在富士柯达胶片套装中明确把 UM400SP 定义为 Kodak UltraMax 400，并以富士 SP3000 扫描采样制作。",
+    "uncertainty": "保留文件中的 V2_1 版本字符串，未找到精确版本日志；不属于 Portra 系列。",
+    "evidence": "作者一手确认系列；2.1 变更待核实",
+    "sources": [
+      {
+        "title": "PladyChan：富士柯达胶片LUT套装 | S9 S52",
+        "url": "https://www.bilibili.com/video/BV15xfYY3EDa",
+        "claim": "直接说明 UM400SP 对应柯达 UltraMax 400，系列基于 SP3000。"
+      }
+    ],
+    "sha256": "b43969cab7a27b62586ce2d88f8ef6150b20d4609fe2e985678e503b7a489ae1",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-33",
+    "name": "VOL24 TXD HAS FX5  G",
+    "filename": "VOL24 TXD HAS FX5  G.cube",
+    "path": "assets/luts/lut-33.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "VOL24 · TXD HAS FX5 · G 版（原代码保留）",
+    "origin": "未检索到能对应这个完整名称的作者、品牌或发布说明，来源尚未确定。",
+    "uncertainty": "VOL24 可能是第 24 辑，但 TXD/HAS/FX5/G 均未获定义。不能仅凭 HAS 或 FX5 宣称是哈苏 Flextight X5 扫描，也不能把 G 译为绿色/通用；该包无 Plady 后缀，不归入已确认 Plady 系列。",
+    "evidence": "待核实",
+    "sources": [],
+    "sha256": "26fcf8c4ad07711ca1a047ac4ad429c3a7f5a9f52fb682b19e5aacaff10c4436",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-34",
+    "name": "VOL24 TXD HAS FX5  H",
+    "filename": "VOL24 TXD HAS FX5  H.cube",
+    "path": "assets/luts/lut-34.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "VOL24 · TXD HAS FX5 · H 版（原代码保留）",
+    "origin": "未检索到能对应这个完整名称的作者、品牌或发布说明，来源尚未确定。",
+    "uncertainty": "H 的含义与来源未确认。不能自行展开为哈苏、高光、高对比或人像；保留独立版本。",
+    "evidence": "待核实",
+    "sources": [],
+    "sha256": "e5f75fc2dd22793d69c1b7ca8953a0c875b02cc6994cb56b77d9d734d7d6c987",
+    "ambiguous": false
+  },
+  {
+    "id": "lut-35",
+    "name": "VOL24 TXD HAS FX5  T",
+    "filename": "VOL24 TXD HAS FX5  T.cube",
+    "path": "assets/luts/lut-35.cube",
+    "category": "创作与其他",
+    "base": "STD",
+    "grid": 33,
+    "cn": "VOL24 · TXD HAS FX5 · T 版（原代码保留）",
+    "origin": "未检索到能对应这个完整名称的作者、品牌或发布说明，来源尚未确定。",
+    "uncertainty": "T 的含义与来源未确认。不能自行展开为钨丝灯、青色或色调；保留独立版本。",
+    "evidence": "待核实",
+    "sources": [],
+    "sha256": "a84e7a29215308e375e26f8a417c49eba5ba60865ee6c9fd459beb3a95ec6e54",
+    "ambiguous": false
+  }
+];
+window.IMAGE_CATALOG = [
+  {
+    "id": "sample-1",
+    "name": "陶瓷与金属静物",
+    "filename": "P1050003.JPG",
+    "path": "assets/images/p1050003.jpg",
+    "base": "STD",
+    "note": "Panasonic DC-S9 · 原片缩小为 1800 × 1200 sRGB 预览"
+  },
+  {
+    "id": "sample-2",
+    "name": "镜头与白布",
+    "filename": "P1050004.JPG",
+    "path": "assets/images/p1050004.jpg",
+    "base": "STD",
+    "note": "Panasonic DC-S9 · 原片缩小为 1800 × 1200 sRGB 预览"
+  },
+  {
+    "id": "sample-chart",
+    "name": "色彩测试卡",
+    "filename": "color-chart.png",
+    "path": "assets/images/color-chart.png",
+    "base": "STD",
+    "note": "程序生成的色块与 RGB / 灰阶渐变；不是相机校准用标准色卡"
+  }
+];
