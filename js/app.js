@@ -51,36 +51,6 @@
     $('imageStrip').innerHTML=images.map(i=>`<div class="image-item ${i.id===activeImage?'active':''}"><button class="image-pick" data-image="${esc(i.id)}" aria-pressed="${i.id===activeImage}"><img src="${esc(assetURL(i,i.thumb||i.path))}" alt="${esc(i.name)}" loading="lazy"><span>${esc(i.name)}</span></button>${i.uploaded?`<button class="remove-image" data-remove-image="${esc(i.id)}" aria-label="移除 ${esc(i.name)}">×</button>`:''}</div>`).join('')+'<button class="image-add" id="stripUpload"><span aria-hidden="true">＋</span>上传新图片</button>';
     const i=imageById(activeImage);$('imageBase').value=i.base;$('imageInfo').textContent=i.note||i.filename;
   }
-  let catalogRefresh=null;
-  function refreshPublicLibrary(){
-    if(exporting)return Promise.resolve();
-    if(catalogRefresh)return catalogRefresh;
-    catalogRefresh=(async()=>{
-      try{
-        const next=await LUTPublicCatalog.load();
-        if(exporting||JSON.stringify(next)===JSON.stringify(publicCatalog))return;
-        const previousLuts=new Map(publicCatalog.luts.map(x=>[x.id,x])),previousImages=new Map(publicCatalog.images.map(x=>[x.id,x]));
-        const changedLuts=new Set([...publicCatalog.luts,...next.luts].filter(x=>JSON.stringify(previousLuts.get(x.id))!==JSON.stringify(next.luts.find(n=>n.id===x.id))).map(x=>x.id));
-        const changedImages=new Set([...publicCatalog.images,...next.images].filter(x=>JSON.stringify(previousImages.get(x.id))!==JSON.stringify(next.images.find(n=>n.id===x.id))).map(x=>x.id));
-        for(const id of changedLuts)parsed.delete(id);for(const id of changedImages)imageCache.delete(id);
-        const privateLuts=luts.filter(x=>x.uploaded),privateImages=images.filter(x=>x.uploaded),currentImages=new Map(images.map(x=>[x.id,x]));
-        const freshImages=next.images.map(x=>{const current=currentImages.get(x.id),old=previousImages.get(x.id);return {...x,...(current&&old&&current.base!==old.base?{base:current.base}:{})};});
-        luts.splice(0,luts.length,...next.luts.map(x=>({...x})),...privateLuts);images.splice(0,images.length,...freshImages,...privateImages);
-        publicCatalog=next;
-        for(const id of selected)if(!lutById(id))selected.delete(id);
-        if(!imageById(activeImage))activeImage=images[0].id;
-        for(const p of panes){
-          const affected=changedLuts.has(p.lutId)||changedLuts.has(p.preId)||changedImages.has(p.imageId);
-          if(p.lutId!=='original'&&!lutById(p.lutId))p.lutId='original';
-          if(p.preId!=='none'&&!lutById(p.preId))p.preId='none';
-          if(!imageById(p.imageId))p.imageId=images[0].id;
-          if(affected){++p.version;p.canvas=null;p.renderSignature=null;p.requestedSignature=null;}
-        }
-        refreshCategories();renderLibrary();renderImages();syncSelectors();renderPanes();toast('公共素材库已更新');
-      }catch(_){/* Keep the current library and working state if the network is unavailable. */}
-    })().finally(()=>{catalogRefresh=null;});
-    return catalogRefresh;
-  }
   async function loadImage(id) {
     if(imageCache.has(id)){const p=imageCache.get(id);imageCache.delete(id);imageCache.set(id,p);return p;}
     const i=imageById(id);if(!i)throw new Error('图片已移除');
@@ -136,13 +106,19 @@
       for(const field of ['lutId','imageId','adapt','preId','expected','exposure','split'])el.querySelector(`[data-field=${field}]`).value=p[field];
       el.querySelector('[data-field=strength]').value=Math.round(p.strength*100);el.querySelector('.intensity output').textContent=Math.round(p.strength*100)+'%';el.querySelector('.exposure-control output').textContent=p.exposure.toFixed(1);
       el.classList.toggle('pane-original',original);el.querySelector('.stage').classList.toggle('split',mode==='split'&&!original);el.querySelector('.effect-badge').textContent=original?'ORIGINAL':'LUT';for(const field of ['strength','adapt','preId','exposure'])el.querySelector(`[data-field=${field}]`).disabled=original;
-      updateSplit(p);updateStatus(p);
+      updatePaneAspect(p);updateSplit(p);updateStatus(p);
       if(p.renderSignature!==signature(p)||!p.canvas){const state=el.querySelector('.stage-state');state.hidden=false;state.textContent='进入视野后载入预览';p.canvas=null;p.requestedSignature=null;++p.version;}
       if(paneObserver)paneObserver.observe(el);else renderPane(p);
     }
     LUTPicker.enhanceAll();if(!renderPending)$('renderStatus').textContent=panes.length?`${panes.length} 个窗格 · ${engine.gl?'GPU 加速':'CPU 渲染'} · 按视野载入预览`:'还没有窗格 · 点击新增窗格开始';saveState();
   }
   function paneElement(p) { return $('paneGrid').querySelector(`[data-pane="${p.id}"]`); }
+  function updatePaneAspect(p) {
+    const stage=paneElement(p)?.querySelector('.stage'),image=imageById(p.imageId);
+    if(!stage)return;
+    if(image?.width>0&&image?.height>0)stage.style.setProperty('--image-ratio',image.width+' / '+image.height);
+    else stage.style.removeProperty('--image-ratio');
+  }
   function updateSplit(p) { const el=paneElement(p);if(!el)return;el.querySelector('.result-canvas').style.clipPath=mode==='split'&&p.lutId!=='original'?`inset(0 0 0 ${p.split}%)`:'none';el.querySelector('.divider').style.left=`${p.split}%`; }
   function updateStatus(p) { const el=paneElement(p);if(!el)return;const status=compatibility(p),note=el.querySelector('.pane-note');note.textContent=status.text;note.className='pane-note'+(status.warn?' warn':''); }
   async function renderPane(p) {
@@ -155,12 +131,13 @@
       const source=resized(image),options={strength:snapshot.strength,adapt:resolveAdapt(snapshot),exposure:snapshot.exposure,interpolation:$('interpolation').value};
       const result=snapshot.lutId==='original'?source:await engine.render(source,lut,options,pre);
       if(p.version!==version||!el.isConnected)return;
+      updatePaneAspect(p);
       for(const [className,canvas] of [['.source-canvas',source],['.result-canvas',result]]){const target=el.querySelector(className);target.width=canvas.width;target.height=canvas.height;target.getContext('2d').drawImage(canvas,0,0);}
       p.canvas=result;p.source=source;p.renderSignature=key;state.hidden=true;updateStatus(p);updateSplit(p);
     } catch(error) { if(p.version===version&&el.isConnected){p.canvas=null;p.source=null;state.textContent=`无法显示：${error.message}`;state.classList.add('error');const note=el.querySelector('.pane-note');note.textContent='解析 / 载入失败 · 可换一款 LUT 或图片重试';note.className='pane-note error';} }
     finally{if(p.version===version)p.requestedSignature=null;renderPending--;$('renderStatus').textContent=renderPending?`正在渲染 · ${renderPending} 项`:`${panes.length} 个窗格 · ${engine.gl?'GPU 加速':'CPU 渲染'} · 按视野载入预览`;}
   }
-  function scheduleRender(p) { ++p.version;clearTimeout(p.timer);p.canvas=null;p.requestedSignature=null;const el=paneElement(p);if(el){const state=el.querySelector('.stage-state');state.textContent='正在计算颜色…';state.classList.remove('error');state.hidden=false;}p.timer=setTimeout(()=>renderPane(p),70);saveState(); }
+  function scheduleRender(p) { ++p.version;clearTimeout(p.timer);p.canvas=null;p.requestedSignature=null;const el=paneElement(p);if(el){updatePaneAspect(p);const state=el.querySelector('.stage-state');state.textContent='正在计算颜色…';state.classList.remove('error');state.hidden=false;}p.timer=setTimeout(()=>renderPane(p),70);saveState(); }
   function syncSelectors() { for(const p of panes){const el=paneElement(p);if(!el)continue;el.querySelector('[data-field=lutId]').innerHTML=lutOptions(p.lutId);el.querySelector('[data-field=preId]').innerHTML=lutOptions(p.preId,false);el.querySelector('[data-field=imageId]').innerHTML=imageOptions(p.imageId);}LUTPicker.syncAll(); }
   function addToWorkspace(ids) {
     panes=[newPane('original'),...ids.map(id=>newPane(id))];renderPanes();
@@ -288,12 +265,11 @@
   document.addEventListener('dragenter',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();dragDepth++;$('dropOverlay').hidden=false;}});document.addEventListener('dragover',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();e.dataTransfer.dropEffect='copy';}});document.addEventListener('dragleave',()=>{dragDepth=Math.max(0,dragDepth-1);if(!dragDepth)$('dropOverlay').hidden=true;});document.addEventListener('drop',async e=>{e.preventDefault();dragDepth=0;$('dropOverlay').hidden=true;if(e.dataTransfer?.files.length)await importFiles([...e.dataTransfer.files]);});window.addEventListener('blur',()=>{dragDepth=0;$('dropOverlay').hidden=true;});
   defaults();try{const stored=localStorage.getItem('lut-lab-state');if(stored)restoreState(JSON.parse(stored));}catch(_){}
   refreshCategories();renderLibrary();renderImages();renderPanes();$('engineStatus').textContent=engine.gl?'WebGL2 · GPU 加速':'CPU · 兼容模式';
-  if(initialCatalogError)toast('公共素材库暂时无法刷新，已载入可用素材；网络恢复后会自动更新。',true);
-  const stopCatalogUpdates=LUTPublicCatalog.observe(refreshPublicLibrary);
-  window.addEventListener('pagehide',event=>{if(!event.persisted)stopCatalogUpdates();});
+  if(initialCatalogError)toast('公共素材库暂时无法刷新，已载入可用素材；请刷新页面重试。',true);
   if(location.protocol==='file:')toast('请用「启动本地预览.cmd」打开。直接双击 HTML 会被浏览器阻止读取内置 LUT。',true);
   window.addEventListener('beforeunload',()=>{for(const i of images)if(i.uploaded)URL.revokeObjectURL(i.path);});
   // Inspectable, read-only diagnostics for developers; user data never leaves the page.
   window.LUTLabDiagnostics=()=>({luts:luts.length,images:images.length,panes:panes.length,gpu:!!engine.gl,renderPending,errors:lastImportMessages.slice()});
 })();
+
 
