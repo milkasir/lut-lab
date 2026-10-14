@@ -1,12 +1,16 @@
 'use strict';
-(function(){
+(async function(){
   const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),clone=x=>JSON.parse(JSON.stringify(x));
   const tokenInput=$('repoToken'),tokenVisibility=$('toggleTokenVisibility');
   const tokenMaskSupported=!!window.CSS?.supports('-webkit-text-security','disc')&&getComputedStyle(tokenInput).getPropertyValue('-webkit-text-security')==='disc';
   function setTokenVisibility(visible=false){tokenInput.classList.toggle('token-visible',visible);tokenInput.type=tokenMaskSupported||visible?'text':'password';tokenVisibility.textContent=visible?'隐藏':'显示';tokenVisibility.setAttribute('aria-pressed',String(visible));tokenVisibility.setAttribute('aria-label',visible?'隐藏授权令牌':'显示授权令牌');}
   function clearTokenField(){tokenInput.value='';setTokenVisibility(false);}
   setTokenVisibility();tokenVisibility.onclick=()=>setTokenVisibility(tokenVisibility.getAttribute('aria-pressed')!=='true');
-  let records=clone(window.LUT_CATALOG),images=clone(window.IMAGE_CATALOG),baseline={luts:clone(records),images:clone(images)},client=null,busy=false,pollVersion=0;
+  document.querySelectorAll('button,#connectForm input,#showAllAssets,#imageFiles,#lutFiles').forEach(x=>x.disabled=true);
+  $('managerStatus').textContent='正在读取最新公共素材库…';
+  let startupCatalog={luts:window.LUT_CATALOG,images:window.IMAGE_CATALOG},startupCatalogError=false;
+  try{startupCatalog=await LUTPublicCatalog.load();}catch(_){startupCatalogError=true;}
+  let records=clone(startupCatalog.luts),images=clone(startupCatalog.images),baseline={luts:clone(records),images:clone(images)},client=null,busy=false,pollVersion=0;
   const newLuts=new Map(),newImages=new Map(),previews=new Map(),excludedLuts=new Set(),excludedImages=new Set();
   const bases={STD:'标准 / sRGB',VLOG:'V-Log',FLOG2:'F-Log2',CNED2:'Cinelike D2',UNKNOWN:'未知 / 未确认'};
   const options=value=>Object.entries(bases).map(([v,t])=>`<option value="${v}" ${value===v?'selected':''}>${t}</option>`).join('');
@@ -54,12 +58,13 @@
   $('imageFiles').onchange=e=>importFiles(e,'image');
   $('lutFiles').onchange=e=>importFiles(e,'lut');
   function resultLinks(result,site){$('publishResult').innerHTML=`<a href="${esc(result.commitUrl)}" target="_blank" rel="noopener noreferrer">查看本次提交 ↗</a><a href="${esc(site)}" target="_blank" rel="noopener noreferrer">打开公开站点 ↗</a>`;$('publishResult').hidden=false;}
-  async function watchSite(result,site,version){const expected=await digest(new TextEncoder().encode(result.source)),end=Date.now()+180000;let networkErrors=0;while(Date.now()<end&&version===pollVersion){await new Promise(resolve=>setTimeout(resolve,4000));if(version!==pollVersion)return;try{const url=new URL('assets/catalog.js',site);url.searchParams.set('v',result.sha+'-'+Date.now());const response=await fetch(url,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(15000)});if(response.ok&&await digest(new Uint8Array(await response.arrayBuffer()))===expected){status('发布完成：公共站点已读取本次更新。所有访客现在都能使用新素材。');return;}}catch(_){if(++networkErrors>=3){status('素材已提交到 GitHub。浏览器无法检查站点刷新，请在 Pages 发布完成后打开公开站点。');return;}}}if(version===pollVersion)status('素材已提交。Pages 仍未显示本次清单，请检查发布分支或 GitHub 的部署状态。');}
+  async function watchSite(result,site,version){const expected=await digest(new TextEncoder().encode(result.source)),end=Date.now()+180000;let networkErrors=0;while(Date.now()<end&&version===pollVersion){await new Promise(resolve=>setTimeout(resolve,4000));if(version!==pollVersion)return;try{const url=new URL('assets/catalog.js',site);url.searchParams.set('v',result.sha+'-'+Date.now());const response=await fetch(url,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(15000)});if(response.ok&&await digest(new Uint8Array(await response.arrayBuffer()))===expected){LUTPublicCatalog.announce(site);status('发布完成：公共站点已读取本次更新。所有访客现在都能使用新素材。');return;}}catch(_){if(++networkErrors>=3){status('素材已提交到 GitHub。浏览器无法检查站点刷新，请在 Pages 发布完成后打开公开站点。');return;}}}if(version===pollVersion)status('素材已提交。Pages 仍未显示本次清单，请检查发布分支或 GitHub 的部署状态。');}
   $('publishUpdate').onclick=async()=>{if(busy||!client)return;lock(true);const version=++pollVersion;try{
     const local=catalog(),preferences=config();if(preferences.repo.toLowerCase()!==(client.owner+'/'+client.repo).toLowerCase()||(preferences.branch&&preferences.branch!==client.branch)||preferences.root!==client.root)throw new Error('连接配置已更改，请重新连接仓库后发布');const site=preferences.site,result=await client.publish(local,pendingFiles(local),message=>status(message));records=clone(result.catalog.luts);images=clone(result.catalog.images);baseline=clone(result.catalog);excludedLuts.clear();excludedImages.clear();newLuts.clear();newImages.clear();render();resultLinks(result,site);status('素材已提交到 GitHub，正在等待 Pages 应用更新…');watchSite(result,site,version);
   }catch(error){status('尚未确认发布成功：'+error.message+' 待发布素材仍保留。',true);}finally{lock(false);}};
   $('downloadUpdate').onclick=async()=>{if(busy)return;lock(true);try{const current=catalog(),files=[{name:'assets/catalog.js',data:LUTLibraryTools.serializeCatalog(current.luts,current.images)},...pendingFiles(current),{name:'删除文件清单.txt',data:LUTGitHub.removedAssets(baseline,current).join('\n')},{name:'更新步骤.txt',data:'将 assets 合并到站点目录并提交 Pages 发布分支。清单为完整合并版本，新增图片、缩略图和 CUBE 随包提供；删除文件清单中列出的旧文件需手动删除。\n'}];const blob=await LUTLibraryTools.zip(files),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='LUT-LAB-library-update.zip';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);status('备用更新包已下载。在线管理时连接仓库并点击发布即可，无需手动解压上传。');}catch(error){status(error.message,true);}finally{lock(false);}};
   try{const saved=JSON.parse(localStorage.getItem('lut-lab-github-config')||'null');if(saved){$('repoAddress').value=saved.repo||'';$('repoBranch').value=saved.branch||'';$('repoRoot').value=saved.root||'';$('siteAddress').value=saved.site||'';}else if(location.hostname.endsWith('.github.io')){const owner=location.hostname.slice(0,-10),parts=location.pathname.split('/').filter(Boolean),repo=parts.length>1?parts[0]:owner+'.github.io';$('repoAddress').value=owner+'/'+repo;$('siteAddress').value=new URL('./',location.href).href;}}catch(_){}
-  window.addEventListener('pagehide',()=>{++pollVersion;client?.disconnect();clearTokenField();});render();status(summary()+' 连接仓库后上传并发布。');
+  window.addEventListener('pagehide',()=>{++pollVersion;client?.disconnect();clearTokenField();});render();status(summary()+(startupCatalogError?' 公共清单暂时无法刷新；连接仓库后会读取最新版本。':' 连接仓库后上传并发布。'));
 })();
+
 

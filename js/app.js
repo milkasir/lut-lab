@@ -2,13 +2,17 @@
 (async function () {
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  $('engineStatus').textContent='正在读取公共素材库…';
+  let publicCatalog={luts:window.LUT_CATALOG,images:window.IMAGE_CATALOG},initialCatalogError=false;
+  try{publicCatalog=await LUTPublicCatalog.load();}catch(_){initialCatalogError=true;}
   const engine = new LUTRenderer();
-  const luts = [...window.LUT_CATALOG], images = window.IMAGE_CATALOG.map(x=>({...x}));
+  const luts = publicCatalog.luts.map(x=>({...x})), images = publicCatalog.images.map(x=>({...x}));
   const parsed = new Map(), imageCache = new Map(), selected = new Set();
   let favorites = new Set(), activeImage = images[0].id, mode = 'grid', columns = 'auto', paneSeq = 0, toastTimer, zoomState, exporting = false;
   let panes = [], renderPending = 0, dragDepth = 0, lastImportMessages = [];
   try { favorites = new Set(JSON.parse(localStorage.getItem('lut-lab-favorites') || '[]')); } catch (_) {}
   const lutById = id => luts.find(x=>x.id===id), imageById = id => images.find(x=>x.id===id);
+  const assetURL=(item,path=item.path)=>{if(item.uploaded||!item.sha256)return path;const url=new URL(path,location.href);url.searchParams.set('v',item.sha256);return url.href;};
   const baseNames = {STD:'标准 / sRGB',VLOG:'V-Log',FLOG2:'F-Log2',CNED2:'Cinelike D2',UNKNOWN:'输入未声明'};
   const adaptNames = {direct:'直接输入',vlog:'sRGB → V-Log',flog2:'sRGB → F-Log2'};
   const newPane = (lutId='original',imageId=activeImage) => ({id:++paneSeq,lutId,imageId,strength:1,adapt:'auto',preId:'none',expected:'auto',exposure:0,split:50,version:0,canvas:null,source:null,timer:null});
@@ -44,8 +48,38 @@
   function refreshCategories() { const value=$('categoryFilter').value;$('categoryFilter').innerHTML='<option value="">全部风格</option>'+[...new Set(luts.map(l=>l.category))].map(c=>`<option>${esc(c)}</option>`).join('');$('categoryFilter').value=value; }
   function renderImages() {
     $('imageCount').textContent=String(images.length).padStart(2,'0');
-    $('imageStrip').innerHTML=images.map(i=>`<div class="image-item ${i.id===activeImage?'active':''}"><button class="image-pick" data-image="${esc(i.id)}" aria-pressed="${i.id===activeImage}"><img src="${esc(i.thumb||i.path)}" alt="${esc(i.name)}" loading="lazy"><span>${esc(i.name)}</span></button>${i.uploaded?`<button class="remove-image" data-remove-image="${esc(i.id)}" aria-label="移除 ${esc(i.name)}">×</button>`:''}</div>`).join('')+'<button class="image-add" id="stripUpload"><span aria-hidden="true">＋</span>上传新图片</button>';
+    $('imageStrip').innerHTML=images.map(i=>`<div class="image-item ${i.id===activeImage?'active':''}"><button class="image-pick" data-image="${esc(i.id)}" aria-pressed="${i.id===activeImage}"><img src="${esc(assetURL(i,i.thumb||i.path))}" alt="${esc(i.name)}" loading="lazy"><span>${esc(i.name)}</span></button>${i.uploaded?`<button class="remove-image" data-remove-image="${esc(i.id)}" aria-label="移除 ${esc(i.name)}">×</button>`:''}</div>`).join('')+'<button class="image-add" id="stripUpload"><span aria-hidden="true">＋</span>上传新图片</button>';
     const i=imageById(activeImage);$('imageBase').value=i.base;$('imageInfo').textContent=i.note||i.filename;
+  }
+  let catalogRefresh=null;
+  function refreshPublicLibrary(){
+    if(exporting)return Promise.resolve();
+    if(catalogRefresh)return catalogRefresh;
+    catalogRefresh=(async()=>{
+      try{
+        const next=await LUTPublicCatalog.load();
+        if(exporting||JSON.stringify(next)===JSON.stringify(publicCatalog))return;
+        const previousLuts=new Map(publicCatalog.luts.map(x=>[x.id,x])),previousImages=new Map(publicCatalog.images.map(x=>[x.id,x]));
+        const changedLuts=new Set([...publicCatalog.luts,...next.luts].filter(x=>JSON.stringify(previousLuts.get(x.id))!==JSON.stringify(next.luts.find(n=>n.id===x.id))).map(x=>x.id));
+        const changedImages=new Set([...publicCatalog.images,...next.images].filter(x=>JSON.stringify(previousImages.get(x.id))!==JSON.stringify(next.images.find(n=>n.id===x.id))).map(x=>x.id));
+        for(const id of changedLuts)parsed.delete(id);for(const id of changedImages)imageCache.delete(id);
+        const privateLuts=luts.filter(x=>x.uploaded),privateImages=images.filter(x=>x.uploaded),currentImages=new Map(images.map(x=>[x.id,x]));
+        const freshImages=next.images.map(x=>{const current=currentImages.get(x.id),old=previousImages.get(x.id);return {...x,...(current&&old&&current.base!==old.base?{base:current.base}:{})};});
+        luts.splice(0,luts.length,...next.luts.map(x=>({...x})),...privateLuts);images.splice(0,images.length,...freshImages,...privateImages);
+        publicCatalog=next;
+        for(const id of selected)if(!lutById(id))selected.delete(id);
+        if(!imageById(activeImage))activeImage=images[0].id;
+        for(const p of panes){
+          const affected=changedLuts.has(p.lutId)||changedLuts.has(p.preId)||changedImages.has(p.imageId);
+          if(p.lutId!=='original'&&!lutById(p.lutId))p.lutId='original';
+          if(p.preId!=='none'&&!lutById(p.preId))p.preId='none';
+          if(!imageById(p.imageId))p.imageId=images[0].id;
+          if(affected){++p.version;p.canvas=null;p.renderSignature=null;p.requestedSignature=null;}
+        }
+        refreshCategories();renderLibrary();renderImages();syncSelectors();renderPanes();toast('公共素材库已更新');
+      }catch(_){/* Keep the current library and working state if the network is unavailable. */}
+    })().finally(()=>{catalogRefresh=null;});
+    return catalogRefresh;
   }
   async function loadImage(id) {
     if(imageCache.has(id)){const p=imageCache.get(id);imageCache.delete(id);imageCache.set(id,p);return p;}
@@ -56,7 +90,7 @@
         const scale=Math.min(1,3200/Math.max(img.naturalWidth,img.naturalHeight));
         const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
         i.width=img.naturalWidth;i.height=img.naturalHeight;resolve(canvas);
-      };img.onerror=()=>reject(new Error('图片无法解码，请使用 JPG / PNG / WebP / AVIF'));img.src=i.path;
+      };img.onerror=()=>reject(new Error('图片无法解码，请使用 JPG / PNG / WebP / AVIF'));img.src=assetURL(i);
     });imageCache.set(id,promise);
     if(imageCache.size>6)imageCache.delete(imageCache.keys().next().value);
     try{return await promise;}catch(error){imageCache.delete(id);throw error;}
@@ -68,7 +102,7 @@
     const item=lutById(id);if(!item)throw new Error('LUT 已移除');
     const promise=(async()=>{
       let text=item.text;
-      if(!text){const response=await fetch(item.path);if(!response.ok)throw new Error(`LUT 加载失败 (${response.status})`);text=await response.text();}
+      if(!text){const response=await fetch(assetURL(item));if(!response.ok)throw new Error(`LUT 加载失败 (${response.status})`);text=await response.text();}
       const result=await engine.parse(text,item.filename);item.grid=result.size3D||result.size1D;item.parseInfo=result;return result;
     })();parsed.set(id,promise);
     try{return await promise;}catch(error){parsed.delete(id);throw error;}
@@ -141,7 +175,7 @@
     const types=info?`${info.size1D?info.size1D+' 点 1D':''}${info.size1D&&info.size3D?' + ':''}${info.size3D?info.size3D+'³ 3D':''}`:'无法读取';
     $('detailContent').innerHTML=`<div class="detail-meta"><span class="tag">${esc(item.category)}</span><span class="tag">${esc(types)}</span><span class="tag ${item.base!=='STD'?'warn':''}">${esc(baseNames[item.base]||item.base)}</span></div>${error?`<p class="input-hint">解析失败：${esc(error)}</p>`:''}<p>${esc(item.cn||item.name)}</p><h3>名称与来历</h3><p>${esc(item.origin||'自上传文件；输入编码请按作者说明手动确认。')}</p><h3>输入匹配</h3><p>${esc(item.inputVerified&&item.base==='FLOG2'?'F-Log2 输入已由维护者实测确认。标准图片自动应用 sRGB → F-Log2 / F-Gamut 前置编码；F-Log2 原片直接输入。原始 CUBE 的 VLOG 注释保留，站点按已确认的元数据处理。':item.ambiguous?'文件名提示 FLog2，但 CUBE 标头写 VLOG。可实验两种编码，不能根据效果好看就认定原始输入。':item.base==='CNED2'?'此 LUT 需要 Cinelike D2 基底。文件可读取，标准 JPG 直接套用是输入不匹配；使用 D2 原片或经过验证的前置转换 LUT。':item.base==='STD'?'本包声明标准 STD 输入；标准 JPG 可用于风格比较，结果不保证等同相机内实时 LUT。':'请确认图片编码与 LUT 期望输入。未知编码不会自动猜测。')}</p><h3>记录与说明</h3><p>${esc(item.uncertainty||'未对自上传 LUT 的来源和色彩空间进行认证。')}</p>${info?`<h3>解析与范围</h3><p>输入 DOMAIN：${esc(info.domainMin.join(', '))} → ${esc(info.domainMax.join(', '))}<br>输出数值：${info.min.toFixed(4)} → ${info.max.toFixed(4)}<br>${esc(info.warnings.join('；')||'结构完整，浮点数据按原值读取。')}</p>`:''}${item.sources?.length?'<h3>整理包记录的来源</h3><div>'+item.sources.map(s=>{const url=safeURL(s.url);return url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a>`:'';}).join('')+'</div>':''}<div class="mini-actions"><button id="useDetailLut" class="secondary">放入一个窗格</button><button id="downloadDetailLut" class="quiet">下载原始 CUBE</button>${item.uploaded?'<button id="removeDetailLut" class="quiet">移除此 LUT</button>':''}</div>`;
     $('useDetailLut').onclick=()=>{panes.push(newPane(item.id));renderPanes();$('detailDialog').close();};
-    $('downloadDetailLut').onclick=()=>item.text?download(new Blob([item.text],{type:'text/plain'}),item.filename):downloadURL(item.path,item.filename);
+    $('downloadDetailLut').onclick=()=>item.text?download(new Blob([item.text],{type:'text/plain'}),item.filename):downloadURL(assetURL(item),item.filename);
     if(item.uploaded)$('removeDetailLut').onclick=()=>{const index=luts.findIndex(l=>l.id===id);luts.splice(index,1);parsed.delete(id);selected.delete(id);favorites.delete(id);for(const p of panes){if(p.lutId===id)p.lutId='original';if(p.preId===id)p.preId='none';}refreshCategories();renderLibrary();renderPanes();$('detailDialog').close();};
   }
   async function importFiles(files) {
@@ -254,8 +288,12 @@
   document.addEventListener('dragenter',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();dragDepth++;$('dropOverlay').hidden=false;}});document.addEventListener('dragover',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();e.dataTransfer.dropEffect='copy';}});document.addEventListener('dragleave',()=>{dragDepth=Math.max(0,dragDepth-1);if(!dragDepth)$('dropOverlay').hidden=true;});document.addEventListener('drop',async e=>{e.preventDefault();dragDepth=0;$('dropOverlay').hidden=true;if(e.dataTransfer?.files.length)await importFiles([...e.dataTransfer.files]);});window.addEventListener('blur',()=>{dragDepth=0;$('dropOverlay').hidden=true;});
   defaults();try{const stored=localStorage.getItem('lut-lab-state');if(stored)restoreState(JSON.parse(stored));}catch(_){}
   refreshCategories();renderLibrary();renderImages();renderPanes();$('engineStatus').textContent=engine.gl?'WebGL2 · GPU 加速':'CPU · 兼容模式';
+  if(initialCatalogError)toast('公共素材库暂时无法刷新，已载入可用素材；网络恢复后会自动更新。',true);
+  const stopCatalogUpdates=LUTPublicCatalog.observe(refreshPublicLibrary);
+  window.addEventListener('pagehide',event=>{if(!event.persisted)stopCatalogUpdates();});
   if(location.protocol==='file:')toast('请用「启动本地预览.cmd」打开。直接双击 HTML 会被浏览器阻止读取内置 LUT。',true);
   window.addEventListener('beforeunload',()=>{for(const i of images)if(i.uploaded)URL.revokeObjectURL(i.path);});
   // Inspectable, read-only diagnostics for developers; user data never leaves the page.
   window.LUTLabDiagnostics=()=>({luts:luts.length,images:images.length,panes:panes.length,gpu:!!engine.gl,renderPending,errors:lastImportMessages.slice()});
 })();
+
