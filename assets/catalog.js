@@ -1166,6 +1166,41 @@ window.LUT_CATALOG = [
     "uncertainty": "输入基底与来源说明由维护者填写。",
     "evidence": "维护者提供",
     "ambiguous": false
+  },
+  {
+    "id": "custom-e94b7b61ced111b4",
+    "name": "DS_5219 update_33",
+    "filename": "DS_5219 update_33.cube",
+    "path": "assets/luts/custom-e94b7b61ced111b4.cube",
+    "category": "新增风格",
+    "base": "UNKNOWN",
+    "declaredBase": "UNKNOWN",
+    "grid": 33,
+    "size1D": 0,
+    "size3D": 33,
+    "sha256": "e94b7b61ced111b4280ba81d070f78e28b2a67c47523573ac879f119d115a7af",
+    "origin": "由库维护者添加。",
+    "uncertainty": "输入基底与来源说明由维护者填写。",
+    "evidence": "维护者提供",
+    "ambiguous": false
+  },
+  {
+    "id": "custom-67558d955fcc9e42",
+    "name": "DS_V500_VLog_33",
+    "filename": "DS_V500_VLog_33.cube",
+    "path": "assets/luts/custom-67558d955fcc9e42.cube",
+    "category": "新增风格",
+    "base": "VLOG",
+    "declaredBase": "UNKNOWN",
+    "grid": 33,
+    "size1D": 0,
+    "size3D": 33,
+    "sha256": "67558d955fcc9e4278468561fdb75058b07d5edefeeeb29f99a2b863232e0407",
+    "origin": "由库维护者添加。",
+    "uncertainty": "输入基底与来源说明由维护者填写。",
+    "evidence": "维护者提供",
+    "ambiguous": false,
+    "inputVerified": true
   }
 ];
 window.IMAGE_CATALOG = [
