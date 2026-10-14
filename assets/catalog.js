@@ -875,5 +875,70 @@ window.IMAGE_CATALOG = [
     "note": "程序生成的色块与 RGB / 灰阶渐变；不是相机校准用标准色卡",
     "metadataStripped": true,
     "sha256": "953a4cd66c50ccb35af64dcfbc5de404e7f2762109813b193b93c63050c10430"
+  },
+  {
+    "id": "image-b0075dd0367bf5d4",
+    "name": "富士山下",
+    "filename": "image-b0075dd0367bf5d4.jpg",
+    "path": "assets/images/image-b0075dd0367bf5d4.jpg",
+    "thumb": "assets/images/image-b0075dd0367bf5d4-thumb.jpg",
+    "base": "STD",
+    "sha256": "b0075dd0367bf5d434153677f444e3c1024f5a4e4909689e2001bff9047c59f3",
+    "width": 960,
+    "height": 1280,
+    "metadataStripped": true,
+    "note": "960 × 1280 · 附加信息已清理"
+  },
+  {
+    "id": "image-aac18d80e0919830",
+    "name": "东京塔上",
+    "filename": "image-aac18d80e0919830.jpg",
+    "path": "assets/images/image-aac18d80e0919830.jpg",
+    "thumb": "assets/images/image-aac18d80e0919830-thumb.jpg",
+    "base": "STD",
+    "sha256": "aac18d80e09198308ca5e4dd0c842111f78e1bc2dbdc832809ff85c7faf7dce5",
+    "width": 1280,
+    "height": 960,
+    "metadataStripped": true,
+    "note": "1280 × 960 · 附加信息已清理"
+  },
+  {
+    "id": "image-65012d331b910e21",
+    "name": "天守阁前",
+    "filename": "image-65012d331b910e21.jpg",
+    "path": "assets/images/image-65012d331b910e21.jpg",
+    "thumb": "assets/images/image-65012d331b910e21-thumb.jpg",
+    "base": "STD",
+    "sha256": "65012d331b910e21a5c83cf6c2da32b7c9b4859afcf7636d2ba1d8af7863124f",
+    "width": 1280,
+    "height": 960,
+    "metadataStripped": true,
+    "note": "1280 × 960 · 附加信息已清理"
+  },
+  {
+    "id": "image-f92b3335f90a4f69",
+    "name": "若草汀",
+    "filename": "image-f92b3335f90a4f69.jpg",
+    "path": "assets/images/image-f92b3335f90a4f69.jpg",
+    "thumb": "assets/images/image-f92b3335f90a4f69-thumb.jpg",
+    "base": "STD",
+    "sha256": "f92b3335f90a4f69db4d910cb64a3e289263111668bddc0a7cb14a252f600af1",
+    "width": 1280,
+    "height": 960,
+    "metadataStripped": true,
+    "note": "1280 × 960 · 附加信息已清理"
+  },
+  {
+    "id": "image-2125b3e0acae9ee6",
+    "name": "娅娅",
+    "filename": "image-2125b3e0acae9ee6.jpg",
+    "path": "assets/images/image-2125b3e0acae9ee6.jpg",
+    "thumb": "assets/images/image-2125b3e0acae9ee6-thumb.jpg",
+    "base": "STD",
+    "sha256": "2125b3e0acae9ee6ac97dd68c485e314c2ba4f064155ea1a8debcf4342103ba5",
+    "width": 853,
+    "height": 1280,
+    "metadataStripped": true,
+    "note": "853 × 1280 · 附加信息已清理"
   }
 ];
