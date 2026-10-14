@@ -654,23 +654,6 @@ window.LUT_CATALOG = [
     "description": "Portra 400 / 哈苏 X5 扫描取向；需 Cinelike D2 输入。"
   },
   {
-    "id": "lut-26",
-    "name": "PT400L Plady",
-    "filename": "PT400L Plady.cube",
-    "path": "assets/luts/lut-26.cube",
-    "category": "胶片风格",
-    "base": "STD",
-    "grid": 33,
-    "cn": "PT400L 胶片风格（原缩写保留）",
-    "origin": "文件署名 Plady。PT400 的写法疑似 Portra 400 系列简写，但没有取得作者公开对应表，不能确认为同一款。",
-    "uncertainty": "PT、L 均未得到一手解释。L 可能是创作名或版本分支，不能擅自译为 Luna、Low、Light 或徕卡；不与 P400SP/Portra400 合并。",
-    "evidence": "待核实",
-    "sources": [],
-    "sha256": "10473611d3fd0944bd689333d5596a3782b5c796f85f4a82fd3082aac01ebf49",
-    "ambiguous": false,
-    "description": "PT400L 胶片配色，阴影偏青蓝；旧库相机转存文件，标准输入。"
-  },
-  {
     "id": "lut-27",
     "name": "PT400SP V3 Plady",
     "filename": "PT400SP V3 Plady.cube",
