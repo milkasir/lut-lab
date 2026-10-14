@@ -76,7 +76,7 @@ p+p { margin-top:10px; }
 .brand-mark i:nth-child(2) { background:#b2bf8c; }
 .brand-mark i:nth-child(3) { background:#7ba99d; }
 .top-actions,.header-links { display:flex; align-items:center; gap:10px; }
-.theme-toggle { background:transparent; color:var(--muted); min-width:108px; }
+.theme-toggle { background:var(--elevated); color:var(--text); min-width:108px; }
 .manage-link { background:transparent; color:var(--muted); }
 .app-shell { display:grid; grid-template-columns:288px minmax(0,1fr); min-height:calc(100vh - 84px); }
 .library { display:flex; flex-direction:column; gap:0; position:sticky; top:0; height:100dvh; min-height:650px; padding:28px 20px 20px; border-right:1px solid var(--line); background:var(--panel); }
@@ -139,9 +139,9 @@ p+p { margin-top:10px; }
 .image-selection { display:grid; gap:3px; min-width:0; }
 .image-selection .eyebrow { font-size:10px; letter-spacing:1px; }
 .image-selection strong { font-size:14px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.apply-image { min-height:44px; padding:0 18px; font-size:14px; box-shadow:0 2px 5px #0001; }
+.apply-image { height:var(--control); min-height:var(--control); padding:0 18px; font-size:13px; box-shadow:0 2px 5px #0001; }
 .image-encoding { display:flex; align-items:center; gap:9px; font-size:12px; color:var(--muted); }
-.image-encoding select { width:172px; font-size:12px; }
+.image-encoding select { width:172px; height:var(--control); min-height:var(--control); font-size:13px; }
 .image-info { grid-column:1/-1; font-size:11px; line-height:1.65; color:var(--muted); overflow-wrap:anywhere; }
 
 /* Comparison controls and adaptive canvases. */
@@ -287,9 +287,11 @@ dialog::backdrop { background:#08130eb3; backdrop-filter:blur(4px); }
   .workspace-heading { align-items:flex-start; flex-direction:column; gap:14px; margin-bottom:24px; }
   .workspace-heading h1 { font-size:27px; }
   .recipe-actions { margin-left:-9px; }
-  .image-settings { grid-template-columns:minmax(110px,1fr) auto; column-gap:14px; }
+  .image-settings { grid-template-columns:minmax(0,1fr) auto; column-gap:14px; }
+  .image-selection { grid-column:1/-1; grid-row:1; }
   .image-encoding { grid-column:1; grid-row:2; }
-  .image-info { grid-column:1/-1; }
+  .apply-image { grid-column:2; grid-row:2; }
+  .image-info { grid-column:1/-1; grid-row:3; }
   .toolbar-start,.toolbar-end { gap:9px; }
   .pane-grid { gap:14px; }
 }
@@ -311,8 +313,8 @@ dialog::backdrop { background:#08130eb3; backdrop-filter:blur(4px); }
   .top-actions { display:contents; }
   .theme-toggle { grid-column:2; grid-row:1; width:44px; min-width:44px; padding:0; }
   .header-links { display:grid; grid-column:1/-1; grid-row:2; grid-template-columns:1fr 44px 1.2fr; gap:9px; }
-  .header-links #helpButton { padding:0; }
-  .header-links #helpButton span { display:none; }
+  .top-actions>#helpButton { grid-column:2; grid-row:1; width:44px; padding:0; }
+  .top-actions>#helpButton span { display:none; }
   .header-links button,.manage-link { font-size:13px; }
   .top-actions>.back-link { grid-column:1/-1; grid-row:2; }
   .app-shell { display:flex; flex-direction:column; }
@@ -329,12 +331,12 @@ dialog::backdrop { background:#08130eb3; backdrop-filter:blur(4px); }
   .image-pick img { height:104px; }
   .image-pick>span { padding:8px; font-size:12px; }
   .image-add { width:104px; flex-basis:104px; }
-  .image-settings { grid-template-columns:minmax(0,1fr) 172px; gap:13px 12px; padding:15px; }
-  .image-selection { grid-column:1; grid-row:1; }
+  .image-settings { grid-template-columns:minmax(0,1fr) auto; gap:13px 12px; padding:15px; }
+  .image-selection { grid-column:1/-1; grid-row:1; }
   .image-selection strong { font-size:13px; }
-  .apply-image { grid-column:1/-1; grid-row:2; width:100%; min-height:46px; }
-  .image-encoding { display:grid; grid-column:2; grid-row:1; gap:3px; font-size:10px; justify-content:end; }
-  .image-encoding select { width:164px; min-height:34px; padding-block:5px; font-size:12px; }
+  .apply-image { grid-column:2; grid-row:2; align-self:end; padding-inline:12px; }
+  .image-encoding { display:grid; grid-column:1; grid-row:2; gap:3px; font-size:10px; }
+  .image-encoding select { width:100%; padding-block:5px; font-size:13px; }
   .image-info { grid-column:1/-1; grid-row:3; font-size:10px; }
   .source-section { padding-bottom:22px; }
   .compare-toolbar { gap:12px; padding:18px 0; }
