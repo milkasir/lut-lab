@@ -8,6 +8,10 @@
   function toBase64(bytes){let text='';for(let i=0;i<bytes.length;i+=32768)text+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(text);}
   function fromBase64(text){return Uint8Array.from(atob(text.replace(/\s/g,'')),c=>c.charCodeAt(0));}
   function sha(value){if(typeof value!=='string'||!/^[a-f\d]{40,64}$/i.test(value))throw new Error('GitHub 返回了无效的文件版本');return value;}
+  function removedAssets(previous,current){
+    const paths=catalog=>new Set([...catalog.luts,...catalog.images].flatMap(item=>[item.path,item.thumb].filter(Boolean))),kept=paths(current);
+    return [...paths(previous)].filter(path=>!kept.has(path)&&/^assets\/(luts|images)\//.test(path)&&!path.includes('\\')&&!path.split('/').some(x=>x==='..'||x==='.'||!x));
+  }
   class Publisher{
     #token;#fetch;
     constructor({repo,token,branch='',root:folder='',fetchImpl=globalThis.fetch.bind(globalThis)}){Object.assign(this,repository(repo));this.branch=branch.trim();this.root=siteRoot(folder);this.#token=token.trim();if(!this.#token)throw new Error('请输入只授权此仓库的 GitHub 令牌');this.#fetch=fetchImpl;this.prefix='/repos/'+encodeURIComponent(this.owner)+'/'+encodeURIComponent(this.repo);this.baseline=null;}
@@ -23,12 +27,13 @@
       for(let i=0;i<files.length;i++){const file=files[i];if(!/^assets\/(luts|images)\//.test(file.name)||file.name.includes('\\')||file.name.split('/').some(x=>x==='..'||x==='.'||!x))throw new Error('新增素材路径无效');onProgress(`上传素材 ${i+1} / ${files.length}…`);const bytes=file.data instanceof Uint8Array?file.data:new Uint8Array(file.data),blob=await this.api(this.prefix+'/git/blobs','POST',{content:toBase64(bytes),encoding:'base64'});uploaded.push({path:this.assetPath(file.name),mode:'100644',type:'blob',sha:sha(blob.sha)});}
       for(let attempt=0;attempt<2;attempt++){
         const latest=await this.latest(),catalog=tools.mergeCatalog(this.baseline,local,latest.catalog),source=tools.serializeCatalog(catalog.luts,catalog.images);onProgress('提交图片、LUT 与清单…');
-        const tree=await this.api(this.prefix+'/git/trees','POST',{base_tree:latest.tree,tree:[...uploaded,{path:this.assetPath('assets/catalog.js'),mode:'100644',type:'blob',content:source}]});
+        const deletions=removedAssets(latest.catalog,catalog).map(path=>({path:this.assetPath(path),mode:'100644',type:'blob',sha:null}));
+        const tree=await this.api(this.prefix+'/git/trees','POST',{base_tree:latest.tree,tree:[...uploaded,...deletions,{path:this.assetPath('assets/catalog.js'),mode:'100644',type:'blob',content:source}]});
         const commit=await this.api(this.prefix+'/git/commits','POST',{message:'Update LUT LAB public library',tree:sha(tree.sha),parents:[latest.head]});
-        const result={sha:commit.sha,catalog,source,commitUrl:'https://github.com/'+encodeURIComponent(this.owner)+'/'+encodeURIComponent(this.repo)+'/commit/'+commit.sha};
+        const result={sha:commit.sha,catalog,source,deleted:deletions.length,commitUrl:'https://github.com/'+encodeURIComponent(this.owner)+'/'+encodeURIComponent(this.repo)+'/commit/'+commit.sha};
         try{await this.api(this.prefix+'/git/refs/heads/'+pathEncode(this.branch),'PATCH',{sha:sha(commit.sha),force:false});this.baseline=catalog;return result;}catch(error){if(error.uncertain){try{if((await this.latest()).head===commit.sha){this.baseline=catalog;return result;}}catch(_){}}if(attempt===0&&[409,422].includes(error.status)){onProgress('仓库同时有更新，正在合并最新版本…');continue;}throw error;}
       }
     }
   }
-  const api={Publisher,repository,siteRoot,toBase64,fromBase64};root.LUTGitHub=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+  const api={Publisher,repository,siteRoot,toBase64,fromBase64,removedAssets};root.LUTGitHub=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:self);

@@ -2,6 +2,8 @@
 
 一个可以直接部署到 **GitHub Pages** 的中文 LUT 在线比较工具。纯 HTML / CSS / JavaScript，没有构建步骤或自建后端。访客比较图片不需要登录；管理员可通过 GitHub API 在线发布公共图片和 LUT。
 
+仓库：[milkasir/lut-lab](https://github.com/milkasir/lut-lab)。公开站点部署地址：`https://milkasir.github.io/lut-lab/`；管理页：`https://milkasir.github.io/lut-lab/manage.html`。
+
 ## 先运行一下
 
 在 Windows 中双击 **`启动本地预览.cmd`**，然后在浏览器打开窗口里给出的地址，通常是：
@@ -164,7 +166,7 @@ GitHub 官方依据：[配置 Pages 发布源](https://docs.github.com/en/pages/
 3. 点 **发布更新**。素材、图片缩略图和完整清单一起保存到已连接仓库的发布分支，随后 Pages 自动发布。
 4. 页面会区分「素材已提交」与「公共站点已应用更新」。检测到新清单上线后显示发布完成，打开公开站点即可使用。通常需要等待 Pages 部署，而非即时改变线上文件。
 
-管理页默认只显示本次新素材，勾选 **显示已有素材** 可以编辑原有名称、分类、编码或取消保留。至少保留一张公共图片；移出清单不会删除仓库里的原始文件。
+管理页默认只显示本次新素材，勾选 **显示已有素材** 可以编辑原有名称、分类、编码，也可以点「删除」。删除先标记，发布前可撤销；发布后条目及对应素材、图片缩略图一起从当前分支删除。共用文件仍有条目引用时保留，至少保留一张公共图片。Git 历史提交仍可能保留已删除的文件。
 
 发布前读取最新仓库清单，自动保留其他人的新增素材，并合并不同字段的修改；同一字段冲突时停止并保留待发布内容。分支更新使用非强制方式。GitHub 分支规则不允许直接提交时会报告失败，文件保留在本次页面会话中，可使用备用离线包。
 
@@ -175,6 +177,16 @@ GitHub 官方依据：[配置 Pages 发布源](https://docs.github.com/en/pages/
 ### 备用离线方式
 
 展开「离线更新包」，可以下载完整清单及新增文件，手动合并 assets 后提交。也可以直接维护 assets/catalog.js：LUT 放 assets/luts/，公共图片放 assets/images/，在相应数组登记 id、name、filename、path、base 等字段。
+
+## 图片隐私与删除
+
+管理页上传的公共图片先在浏览器中解码，再通过 canvas 重新编码；只上传清理后的文件和缩略图，原始图片字节不会进入仓库。JPEG 重新编码为 JPEG，PNG / WebP / AVIF 编码为 PNG，最长边 3200 像素。EXIF（包含拍摄时间、GPS、相机序列号等）、XMP、IPTC 和注释不随原图复制，生成文件再次检查 JPEG / PNG / WebP 的附加信息块。编码后的哈希用于生成文件名，避免把原始文件名直接放进素材路径。
+
+本站现有 3 张示例图经独立图像库检查，均没有 EXIF、XMP、IPTC；两张静物照片经画面检查，未发现人脸、证件、地址或联系方式。清理附加信息无法去掉照片画面、显示名称中已有的个人信息，发布前请检查预览和名称。浏览器不支持的格式会拒绝上传。
+
+点击「显示已有素材」→ 对应条目「删除」→「发布更新」。发布前可点「撤销」。当前分支和网页会移除相关文件，但公开 Git 历史、已下载副本和缓存不能靠这个按钮擦除。误传敏感素材时还需处理 Git 历史及缓存。离线 ZIP 不会自动删除旧文件，按其中的删除清单手动移除。
+
+普通比较工作台临时上传的图片只在自己的浏览器中处理；导出的对比图经过 canvas 编码，不复制原始 EXIF。
 
 ## 素材与代码
 
@@ -187,9 +199,9 @@ GitHub 官方依据：[配置 Pages 发布源](https://docs.github.com/en/pages/
 ## 开发与验证
 
 ```shell
-node --test tests/core.test.cjs tests/library-tools.test.cjs tests/github-publisher.test.cjs
+node --test tests/*.test.cjs
 ```
 
-21 项测试覆盖 LUT 数学、解析、原始文件哈希、已确认输入覆盖、ZIP，以及在线发布的一次提交、目录保留、并发合并、分支保护、响应丢失核实、令牌清除和目标限制。GitHub 写入使用本地模拟 API 验证，未连接用户的真实仓库。参见 `验证记录.md`。
+26 项测试覆盖 LUT 数学、解析、原始文件哈希、已确认输入覆盖、ZIP，以及在线发布的一次提交、目录保留、并发合并、分支保护、响应丢失核实、令牌清除、目标限制、真实文件删除、共用文件保留及图片附加信息检查。上传和删除逻辑使用本地模拟 API 验证；站点源码与已校验的素材通过 GitHub 连接上传到上述仓库。参见 `验证记录.md`。
 
 技术来源：[Panasonic V-Log / V-Gamut 官方手册](https://pro-av.panasonic.net/en/cinema_camera_varicam_eva/support/pdf/VARICAM_V-Log_V-Gamut.pdf)、[FUJIFILM F-Log2 官方数据表](https://dl.fujifilm-x.com/support/lut/F-Log2_DataSheet_E_Ver.1.0.pdf)。色域矩阵和转移函数按上述厂商资料实现；F-Gamut 采用 BT.2020 原色，sRGB 与 BT.709 使用相同原色。
