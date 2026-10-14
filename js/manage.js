@@ -6,7 +6,7 @@
   function setTokenVisibility(visible=false){tokenInput.classList.toggle('token-visible',visible);tokenInput.type=tokenMaskSupported||visible?'text':'password';tokenVisibility.textContent=visible?'隐藏':'显示';tokenVisibility.setAttribute('aria-pressed',String(visible));tokenVisibility.setAttribute('aria-label',visible?'隐藏授权令牌':'显示授权令牌');}
   function clearTokenField(){tokenInput.value='';setTokenVisibility(false);}
   setTokenVisibility();tokenVisibility.onclick=()=>setTokenVisibility(tokenVisibility.getAttribute('aria-pressed')!=='true');
-  document.querySelectorAll('button,#connectForm input,#showAllAssets,#imageFiles,#lutFiles').forEach(x=>x.disabled=true);
+  document.querySelectorAll('button:not(#themeToggle),#connectForm input,#showAllAssets,#imageFiles,#lutFiles').forEach(x=>x.disabled=true);
   $('managerStatus').textContent='正在读取最新公共素材库…';
   let startupCatalog={luts:window.LUT_CATALOG,images:window.IMAGE_CATALOG},startupCatalogError=false;
   try{startupCatalog=await LUTPublicCatalog.load();}catch(_){startupCatalogError=true;}
@@ -66,6 +66,7 @@
   try{const saved=JSON.parse(localStorage.getItem('lut-lab-github-config')||'null');if(saved){$('repoAddress').value=saved.repo||'';$('repoBranch').value=saved.branch||'';$('repoRoot').value=saved.root||'';$('siteAddress').value=saved.site||'';}else if(location.hostname.endsWith('.github.io')){const owner=location.hostname.slice(0,-10),parts=location.pathname.split('/').filter(Boolean),repo=parts.length>1?parts[0]:owner+'.github.io';$('repoAddress').value=owner+'/'+repo;$('siteAddress').value=new URL('./',location.href).href;}}catch(_){}
   window.addEventListener('pagehide',()=>{++pollVersion;client?.disconnect();clearTokenField();});render();status(summary()+(startupCatalogError?' 公共清单暂时无法刷新；连接仓库后会读取最新版本。':' 连接仓库后上传并发布。'));
 })();
+
 
 
 
