@@ -8,7 +8,7 @@
 
 同一项的斜线表示作者给出的备选值；含糊的原文单独保留，不推测符号或曝光步长。
 
-## 兔小呆 VOL.2 KEDA 400 · Yang
+## VOL2 keda 400 Yang（兔小呆vol2）
 
 - 原文件：`VOL2 keda 400 Yang .cube`
 - 来源目录：`VOL.2 TXD kade 400/cube/VOL2 keda 400 Yang .cube`
@@ -38,7 +38,7 @@ KEDA 400 创作配色，Yang 独立分支。机身参考：STD；对比+0.5，�
 
 截图标题为 KEDA 400+，未分别标出 Yang/Gai；两款共用该图作为参考，不推断分支差异。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.2 KEDA 400 · Gai
+## VOL2 keda 400 Gai（兔小呆vol2）
 
 - 原文件：`VOL2 keda 400 Gai.cube`
 - 来源目录：`VOL.2 TXD kade 400/cube/VOL2 keda 400 Gai.cube`
@@ -68,7 +68,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 截图标题为 KEDA 400+，未分别标出 Yang/Gai；两款共用该图作为参考，不推断分支差异。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.7 柯达5203 · V5
+## VOL7 TXD Kodak 5203 V5（兔小呆vol7）
 
 - 原文件：`VOL7 TXD Kodak 5203 V5.cube`
 - 来源目录：`VOL.7 TXD 柯达5203/cube/VOL7 TXD Kodak 5203 V5.cube`
@@ -94,7 +94,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 使用技巧文字提及另有机内参数截图，但本 ZIP 未包含该截图；未补写对比、高光、阴影等数值。V5 的单独变更说明未附。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.10 青橙 PRO · M V2A
+## VOL10 QC M  V2A（兔小呆vol10）
 
 - 原文件：`VOL10 QC M  V2A.cube`
 - 来源目录：`VOL.10 TXD 青-橙 PRO/cube/VOL10 QC M  V2A.cube`
@@ -129,7 +129,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 图片按 M/P/F 介绍；M、P 文件名中的 V2A 未附单独变更说明。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.10 青橙 PRO · P V2A
+## VOL10 QC P  V2A（兔小呆vol10）
 
 - 原文件：`VOL10 QC P  V2A.cube`
 - 来源目录：`VOL.10 TXD 青-橙 PRO/cube/VOL10 QC P  V2A.cube`
@@ -161,7 +161,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 阴影原文为“-0.5&1”，第二项未标正负号；原样记录，不擅自改为 -1。V2A 未附单独变更说明。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.10 青橙 PRO · F
+## VOL10 QC F（兔小呆vol10）
 
 - 原文件：`VOL10 QC F.cube`
 - 来源目录：`VOL.10 TXD 青-橙 PRO/cube/VOL10 QC F.cube`
@@ -193,7 +193,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 阴影原文为“-0.5&1”，第二项未标正负号；原样记录，不擅自改为 -1。适马 fp L 是作者描述的配色取向，不代表适马官方 LUT。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.12 富士NC · 加强版
+## VOL12 TXD FUJI NC（兔小呆vol12）
 
 - 原文件：`VOL12 TXD FUJI NC.cube`
 - 来源目录：`VOL.12 TXD 富士NC/CUBE文件/VOL12 TXD FUJI NC.cube`
@@ -222,7 +222,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.12 富士NC · P人像版
+## VOL12 TXD FUJI NC P（兔小呆vol12）
 
 - 原文件：`VOL12 TXD FUJI NC P.cube`
 - 来源目录：`VOL.12 TXD 富士NC/CUBE文件/VOL12 TXD FUJI NC P.cube`
@@ -251,7 +251,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 对比度原图写“+0.5-1”，保留原文，未改写成已确认的两个备选值或范围。 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.13 柯达5207 · C1
+## VOL13 TXD KD5207 C1（兔小呆vol13）
 
 - 原文件：`VOL13 TXD KD5207 C1.cube`
 - 来源目录：`VOL.13 TXD 柯达5207/CUBE/VOL13 TXD KD5207 C1.cube`
@@ -290,7 +290,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.13 柯达5207 · W1
+## VOL13 TXD KD5207 W1（兔小呆vol13）
 
 - 原文件：`VOL13 TXD KD5207 W1.cube`
 - 来源目录：`VOL.13 TXD 柯达5207/CUBE/VOL13 TXD KD5207 W1.cube`
@@ -329,7 +329,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.13 柯达5207 · G1
+## VOL13 TXD KD5207 G1（兔小呆vol13）
 
 - 原文件：`VOL13 TXD KD5207 G1.cube`
 - 来源目录：`VOL.13 TXD 柯达5207/CUBE/VOL13 TXD KD5207 G1.cube`
@@ -368,7 +368,7 @@ KEDA 400 创作配色，Gai 独立分支。机身参考：STD；对比+0.5，高
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.16 GR III负片 · B基础版
+## VOL16 TXD GR3 Neg B（兔小呆vol16）
 
 - 原文件：`VOL16 TXD GR3 Neg B.cube`
 - 来源目录：`VOL.16 TXD GR3负片模拟/cube/VOL16 TXD GR3 Neg B.cube`
@@ -402,7 +402,7 @@ GR III负片的低饱和低反差基础版，可自行调节影调和白平衡�
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.16 GR III负片 · G人像版
+## VOL16 TXD GR3 Neg G（兔小呆vol16）
 
 - 原文件：`VOL16 TXD GR3 Neg G.cube`
 - 来源目录：`VOL.16 TXD GR3负片模拟/cube/VOL16 TXD GR3 Neg G.cube`
@@ -449,7 +449,7 @@ GR III负片人像版，提亮并优化肤色，可搭1/4黑柔或白柔。机�
 
 机身参数为作者推荐，未做实机复现验证；网页只应用 CUBE 颜色数据，不自动应用机身颗粒、清晰度、降噪或动态范围设置。
 
-## 兔小呆 VOL.16 GR III负片 · H街拍版
+## VOL16 TXD GR3 Neg H（兔小呆vol16）
 
 - 原文件：`VOL16 TXD GR3 Neg H.cube`
 - 来源目录：`VOL.16 TXD GR3负片模拟/cube/VOL16 TXD GR3 Neg H.cube`
