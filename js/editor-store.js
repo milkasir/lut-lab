@@ -1,0 +1,8 @@
+/* Local-only storage. Projects and CUBE files never leave this browser. */
+(function(root){
+  'use strict';
+  let opening;
+  function open(){if(opening)return opening;opening=new Promise((resolve,reject)=>{if(!root.indexedDB){reject(Error('浏览器没有本地工程存储'));return;}const req=indexedDB.open('lut-lab-editor',1),timer=setTimeout(()=>reject(Error('本地存储暂时无法打开')),5000);req.onupgradeneeded=()=>{for(const name of ['projects','drafts'])if(!req.result.objectStoreNames.contains(name))req.result.createObjectStore(name,{keyPath:'id'});};req.onsuccess=()=>{clearTimeout(timer);req.result.onversionchange=()=>req.result.close();resolve(req.result);};req.onerror=()=>{clearTimeout(timer);reject(req.error||Error('无法打开本地存储'));};req.onblocked=()=>{clearTimeout(timer);reject(Error('请关闭其他版本的编辑页面后重试'));};}).catch(e=>{opening=null;throw e;});return opening;}
+  async function transaction(store,mode,run){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction(store,mode);let value;try{const request=run(tx.objectStore(store));request.onsuccess=()=>value=request.result;request.onerror=()=>tx.abort();}catch(e){reject(e);return;}tx.oncomplete=()=>resolve(value);tx.onerror=tx.onabort=()=>reject(tx.error||Error('无法保存到本地存储'));});}
+  const api={list:()=>transaction('projects','readonly',s=>s.getAll()),save:r=>transaction('projects','readwrite',s=>s.put(r)),remove:id=>transaction('projects','readwrite',s=>s.delete(id)),draft:p=>transaction('drafts','readwrite',s=>s.put({id:'active',project:p,updatedAt:Date.now()})),readDraft:()=>transaction('drafts','readonly',s=>s.get('active'))};root.LUTEditorStore=api;
+})(typeof globalThis!=='undefined'?globalThis:self);
