@@ -2193,32 +2193,6 @@ window.IMAGE_CATALOG = [
     "note": "1280 × 960 · 附加信息已清理"
   },
   {
-    "id": "image-65012d331b910e21",
-    "name": "天守阁前",
-    "filename": "image-65012d331b910e21.jpg",
-    "path": "assets/images/image-65012d331b910e21.jpg",
-    "thumb": "assets/images/image-65012d331b910e21-thumb.jpg",
-    "base": "STD",
-    "sha256": "65012d331b910e21a5c83cf6c2da32b7c9b4859afcf7636d2ba1d8af7863124f",
-    "width": 1280,
-    "height": 960,
-    "metadataStripped": true,
-    "note": "1280 × 960 · 附加信息已清理"
-  },
-  {
-    "id": "image-f92b3335f90a4f69",
-    "name": "若草汀",
-    "filename": "image-f92b3335f90a4f69.jpg",
-    "path": "assets/images/image-f92b3335f90a4f69.jpg",
-    "thumb": "assets/images/image-f92b3335f90a4f69-thumb.jpg",
-    "base": "STD",
-    "sha256": "f92b3335f90a4f69db4d910cb64a3e289263111668bddc0a7cb14a252f600af1",
-    "width": 1280,
-    "height": 960,
-    "metadataStripped": true,
-    "note": "1280 × 960 · 附加信息已清理"
-  },
-  {
     "id": "image-2125b3e0acae9ee6",
     "name": "娅娅",
     "filename": "image-2125b3e0acae9ee6.jpg",
