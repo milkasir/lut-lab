@@ -39,7 +39,7 @@
     $('interpolation').value=state.interpolation==='trilinear'?'trilinear':'tetrahedral';
     if(report)toast(missing?`已载入方案；${missing} 项素材缺失，已使用原图或示例替代。请上传对应文件后重新载入。`:'已载入方案',!!missing);
   }
-  function filteredLuts() { const q=$('lutSearch').value.trim().toLowerCase(),cat=$('categoryFilter').value,fav=$('favoritesFilter').getAttribute('aria-pressed')==='true';return luts.filter(l=>(!q||[l.name,l.cn,l.category,l.base,baseNames[l.base],l.description].join(' ').toLowerCase().includes(q))&&(!cat||l.category===cat)&&(!fav||favorites.has(l.id))); }
+  function filteredLuts() { const q=$('lutSearch').value.trim().toLowerCase(),cat=$('categoryFilter').value,fav=$('favoritesFilter').getAttribute('aria-pressed')==='true';return luts.filter(l=>(!q||[l.name,l.cn,l.author,l.category,l.base,baseNames[l.base],l.description].join(' ').toLowerCase().includes(q))&&(!cat||l.category===cat)&&(!fav||favorites.has(l.id))); }
   function renderLibrary() {
     const list=filteredLuts();$('libraryCount').textContent=luts.length;$('selectedCount').textContent=`${selected.size} 已选`;
     $('selectVisible').checked=!!list.length&&list.every(l=>selected.has(l.id));$('selectVisible').indeterminate=list.some(l=>selected.has(l.id))&&!$('selectVisible').checked;

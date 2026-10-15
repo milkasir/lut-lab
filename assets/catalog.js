@@ -1550,7 +1550,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-1c3ee237cc2b2197",
-    "name": "VOL2 keda 400 Yang（兔小呆vol2）",
+    "name": "keda 400 Yang TXD VOL2",
     "filename": "VOL2 keda 400 Yang .cube",
     "path": "assets/luts/custom-1c3ee237cc2b2197.cube",
     "category": "胶片风格",
@@ -1587,7 +1587,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-2740f4c5975de540",
-    "name": "VOL2 keda 400 Gai（兔小呆vol2）",
+    "name": "keda 400 Gai TXD VOL2",
     "filename": "VOL2 keda 400 Gai.cube",
     "path": "assets/luts/custom-2740f4c5975de540.cube",
     "category": "胶片风格",
@@ -1624,7 +1624,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-a0dec5ea84cfa41e",
-    "name": "VOL7 TXD Kodak 5203 V5（兔小呆vol7）",
+    "name": "Kodak 5203 V5 TXD VOL7",
     "filename": "VOL7 TXD Kodak 5203 V5.cube",
     "path": "assets/luts/custom-a0dec5ea84cfa41e.cube",
     "category": "胶片风格",
@@ -1657,7 +1657,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-be85d9fd21aac71c",
-    "name": "VOL10 QC M  V2A（兔小呆vol10）",
+    "name": "QC M V2A TXD VOL10",
     "filename": "VOL10 QC M  V2A.cube",
     "path": "assets/luts/custom-be85d9fd21aac71c.cube",
     "category": "创作与其他",
@@ -1699,7 +1699,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-c8b03680c3e64d56",
-    "name": "VOL10 QC P  V2A（兔小呆vol10）",
+    "name": "QC P V2A TXD VOL10",
     "filename": "VOL10 QC P  V2A.cube",
     "path": "assets/luts/custom-c8b03680c3e64d56.cube",
     "category": "创作与其他",
@@ -1738,7 +1738,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-847d59dcb90f909f",
-    "name": "VOL10 QC F（兔小呆vol10）",
+    "name": "QC F TXD VOL10",
     "filename": "VOL10 QC F.cube",
     "path": "assets/luts/custom-847d59dcb90f909f.cube",
     "category": "创作与其他",
@@ -1777,7 +1777,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-ca647e8a60744ba3",
-    "name": "VOL12 TXD FUJI NC（兔小呆vol12）",
+    "name": "FUJI NC TXD VOL12",
     "filename": "VOL12 TXD FUJI NC.cube",
     "path": "assets/luts/custom-ca647e8a60744ba3.cube",
     "category": "富士风格",
@@ -1813,7 +1813,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-5f277cd462cf51be",
-    "name": "VOL12 TXD FUJI NC P（兔小呆vol12）",
+    "name": "FUJI NC P TXD VOL12",
     "filename": "VOL12 TXD FUJI NC P.cube",
     "path": "assets/luts/custom-5f277cd462cf51be.cube",
     "category": "富士风格",
@@ -1849,7 +1849,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-384f854abed026ef",
-    "name": "VOL13 TXD KD5207 C1（兔小呆vol13）",
+    "name": "KD5207 C1 TXD VOL13",
     "filename": "VOL13 TXD KD5207 C1.cube",
     "path": "assets/luts/custom-384f854abed026ef.cube",
     "category": "胶片风格",
@@ -1895,7 +1895,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-9cba4bb0c3bb0ab8",
-    "name": "VOL13 TXD KD5207 W1（兔小呆vol13）",
+    "name": "KD5207 W1 TXD VOL13",
     "filename": "VOL13 TXD KD5207 W1.cube",
     "path": "assets/luts/custom-9cba4bb0c3bb0ab8.cube",
     "category": "胶片风格",
@@ -1941,7 +1941,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-a83728d0436bf410",
-    "name": "VOL13 TXD KD5207 G1（兔小呆vol13）",
+    "name": "KD5207 G1 TXD VOL13",
     "filename": "VOL13 TXD KD5207 G1.cube",
     "path": "assets/luts/custom-a83728d0436bf410.cube",
     "category": "胶片风格",
@@ -1987,7 +1987,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-2c1de95b80f24ff8",
-    "name": "VOL16 TXD GR3 Neg B（兔小呆vol16）",
+    "name": "GR3 Neg B TXD VOL16",
     "filename": "VOL16 TXD GR3 Neg B.cube",
     "path": "assets/luts/custom-2c1de95b80f24ff8.cube",
     "category": "理光风格",
@@ -2028,7 +2028,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-2077533ad0a2af46",
-    "name": "VOL16 TXD GR3 Neg G（兔小呆vol16）",
+    "name": "GR3 Neg G TXD VOL16",
     "filename": "VOL16 TXD GR3 Neg G.cube",
     "path": "assets/luts/custom-2077533ad0a2af46.cube",
     "category": "理光风格",
@@ -2082,7 +2082,7 @@ window.LUT_CATALOG = [
   },
   {
     "id": "custom-a72f66799426535c",
-    "name": "VOL16 TXD GR3 Neg H（兔小呆vol16）",
+    "name": "GR3 Neg H TXD VOL16",
     "filename": "VOL16 TXD GR3 Neg H.cube",
     "path": "assets/luts/custom-a72f66799426535c.cube",
     "category": "理光风格",
