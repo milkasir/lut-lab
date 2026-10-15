@@ -5,6 +5,7 @@
   let saved;try{saved=localStorage.getItem('lut-lab-theme');}catch(_){}
   let explicit=saved==='light'||saved==='dark';
   const paths={
+    edit:'<path d="m16 3 5 5M4 20l4-1L21 6l-5-5L3 14l-1 8Z"/>',
     plus:'<path d="M12 5v14M5 12h14"/>',close:'<path d="m6 6 12 12M18 6 6 18"/>',
     info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
     star:'<path d="m12 3 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17.2l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9Z"/>',
@@ -30,3 +31,4 @@
   document.addEventListener('DOMContentLoaded',()=>{apply(root.dataset.theme);document.getElementById('themeToggle')?.addEventListener('click',()=>{explicit=true;const theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('lut-lab-theme',theme);}catch(_){}apply(theme);});});
   window.LUTUI={icon};
 })();
+
