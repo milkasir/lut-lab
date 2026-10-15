@@ -2,7 +2,7 @@
 (function(root){
   'use strict';
   const C=root.LUTCore||(typeof require==='function'?require('./lut-core.js'):null),clamp=C.clamp;
-  const BASES=['STD','VLOG','FLOG2','CNED2','MONO','UNKNOWN'];
+  const BASES=['STD','VLOG','FLOG2','CNED2','MONO','PORT','UNKNOWN'];
   const HUES=[0,30,60,120,180,240,270,300];
   const V_TO_RGB=[[1.806576,-.695697,-.110879],[-.17009,1.305955,-.135865],[-.025206,-.154468,1.179674]];
   const RGB_TO_F=[[.627404,.329283,.043313],[.069097,.91954,.011363],[.016391,.088013,.895596]];
@@ -81,7 +81,7 @@
     };
   }
   function exportProfile(p,mode='generic'){
-    let base=p.inputBase;if(mode==='panasonic'){if(base==='UNKNOWN')throw Error('请先确认 LUT 输入基底，未知编码不能导出到机身。');if(base==='FLOG2')base='VLOG';if(!['STD','VLOG','CNED2','MONO'].includes(base))throw Error('该输入基底不受此松下导出配置支持。');}
+    let base=p.inputBase;if(mode==='panasonic'){if(base==='UNKNOWN')throw Error('请先确认 LUT 输入基底，未知编码不能导出到机身。');if(base==='FLOG2')base='VLOG';if(!['STD','VLOG','CNED2','MONO','PORT'].includes(base))throw Error('该输入基底不受此松下导出配置支持。');}
     return {base,adapt:base===p.inputBase?null:{from:base,to:p.inputBase},note:p.inputBase==='FLOG2'&&mode==='panasonic'?'已将 V-Log / V-Gamut → F-Log2 / F-Gamut 转换烘焙进 LUT；机身使用 V-Log。':''};
   }
   function bake(p,{size=33,mode='generic',source}={}){

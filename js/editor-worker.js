@@ -1,5 +1,5 @@
 'use strict';
-importScripts('lut-core.js','lut-edit-core.js?v=editor-1');
+importScripts('lut-core.js','lut-edit-core.js?v=port-um400-1');
 let source=null;
 self.onmessage=({data})=>{try{
   if(data.type==='source'){source=LUTEditCore.compileSource(data.source);self.postMessage({id:data.id,result:true});return;}

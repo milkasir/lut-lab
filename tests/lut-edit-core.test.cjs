@@ -28,6 +28,17 @@ test('F-Log2 Panasonic export bakes a real V-Log bridge and declares VLOG',()=>{
  for(const [r,g,b]of [[0,0,0],[16,16,16],[8,12,20],[25,28,31]]){const input=[r/32,g/32,b/32],i=(b*33*33+g*33+r)*3;near(Array.from(camera.threeD.slice(i,i+3)),fn(E.convert(input,'VLOG','FLOG2')),2e-6);}
  assert.throws(()=>E.bake(E.project({inputBase:'UNKNOWN'}),{mode:'panasonic'}),/确认/);assert.throws(()=>E.bake(p,{size:65,mode:'panasonic'}),/33/);
 });
+test('PORT input survives project storage and Panasonic export without inventing an sRGB conversion',()=>{
+ const source=E.bake(E.project({inputBase:'PORT'}),{mode:'panasonic'});
+ source.threeD=Float32Array.from(source.threeD,(v,i)=>i%3===0?v*.8:v);
+ const p=E.project({inputBase:'PORT',source:{base:'PORT',lut:E.pack(source),pre:null,options:{strength:1,adapt:'direct',exposure:0,interpolation:'tetrahedral'}}});
+ const restored=E.validate(JSON.parse(JSON.stringify(p)));
+ assert.equal(restored.inputBase,'PORT');assert.equal(restored.source.lut.base,'PORT');
+ const exported=C.parseCube(E.cube(E.bake(restored,{mode:'panasonic'})));
+ assert.equal(exported.base,'PORT');assert.equal(exported.size3D,33);
+ near(Array.from(exported.threeD),Array.from(source.threeD));
+ assert.throws(()=>E.convert([.1,.2,.3],'STD','PORT'),/没有通用转换/);
+});
 test('new log foundation retains scene values for negative exposure before display clipping',()=>{
  const p=E.project({inputBase:'VLOG'}),white=E.convert([2,2,2].map(C.encodeSRGB),'STD','VLOG');p.grade.exposure=-2;const value=E.compile(p)(white);near(value,[.5,.5,.5].map(C.encodeSRGB),1e-5);
 });

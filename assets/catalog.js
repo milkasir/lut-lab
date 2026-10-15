@@ -2133,6 +2133,32 @@ window.LUT_CATALOG = [
       "intelligentDynamicRange": "AUTO",
       "diffusionFilter": "1/4 黑柔或白柔"
     }
+  },
+  {
+    "id": "custom-23ad11217090c23b",
+    "name": "UM400",
+    "filename": "UM400.cube",
+    "path": "assets/luts/custom-23ad11217090c23b.cube",
+    "category": "创意配色",
+    "base": "PORT",
+    "declaredBase": "PORT",
+    "inputVerified": true,
+    "grid": 33,
+    "size1D": 0,
+    "size3D": 33,
+    "sha256": "23ad11217090c23be14761deb66e2ae840f1a943d65041ce2e960657edda0411",
+    "description": "机身基底 PORT（人像）；白平衡自动或日光，下午可用阴天加强暖色。曝光按喜好 ±2/3 EV；阴影通常不调，大光比可 +2～+3。其他参数按个人审美调整。",
+    "origin": "用户提供 UM400.cube 及配套参数建议图。",
+    "evidence": "CUBE 标头与随附参数建议图",
+    "uncertainty": "文件声明 PORT 人像格调输入；标准 JPG 仅供配色比较，不能模拟相机人像格调。参数图未指定其他设置，白平衡、曝光和阴影建议不自动烘焙进原始 CUBE。",
+    "ambiguous": false,
+    "cameraSettings": {
+      "photoStyle": "PORT",
+      "whiteBalance": "自动或日光；下午可用阴天加强暖色",
+      "exposureCompensationEV": "按喜好 ±2/3",
+      "shadows": "通常不调；大光比 +2～+3",
+      "otherParameters": "按个人审美调整"
+    }
   }
 ];
 window.IMAGE_CATALOG = [

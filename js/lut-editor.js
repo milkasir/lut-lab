@@ -1,8 +1,8 @@
 'use strict';
 (function(){
-  const workerURL=new URL('editor-worker.js?v=editor-1',document.currentScript.src),Core=LUTEditCore,icon=LUTUI.icon;
+  const workerURL=new URL('editor-worker.js?v=port-um400-1',document.currentScript.src),Core=LUTEditCore,icon=LUTUI.icon;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const BASE_NAMES={STD:'标准 / sRGB',VLOG:'V-Log / V-Gamut',FLOG2:'F-Log2 / F-Gamut',CNED2:'Cinelike D2',MONO:'MONO / 单色格调',UNKNOWN:'未知 · 需确认'};
+  const BASE_NAMES={STD:'标准 / sRGB',VLOG:'V-Log / V-Gamut',FLOG2:'F-Log2 / F-Gamut',CNED2:'Cinelike D2',MONO:'MONO / 单色格调',PORT:'PORT / 人像格调',UNKNOWN:'未知 · 需确认'};
   const HSL_NAMES=['红','橙','黄','绿','青','蓝','紫','洋红'],SWATCHES=['#db5655','#dd964b','#c9b94c','#5eab69','#51a5a1','#587fc7','#9c72c8','#c46d9d'];
   const BASIC=[['exposure','曝光 EV',-4,4,.05],['temperature','色温偏移',-100,100,1],['tint','绿 / 洋红偏移',-100,100,1],['brightness','亮度',-100,100,1],['contrast','对比度',-100,100,1],['pivot','对比中心',.1,.9,.01],['highlights','高光',-100,100,1],['shadows','阴影',-100,100,1],['whites','白色色阶',-100,100,1],['blacks','黑色色阶',-100,100,1],['gamma','中间调 Gamma',.2,3,.01],['fade','褪黑',0,100,1]];
   const COLOR=[['saturation','饱和度',-100,100,1],['vibrance','自然饱和度',-100,100,1],['hue','整体色相 °',-180,180,1],['monochrome','黑白混合 %',0,100,1],['monoWeights.0','黑白 · 红权重',0,2,.01],['monoWeights.1','黑白 · 绿权重',0,2,.01],['monoWeights.2','黑白 · 蓝权重',0,2,.01]];
